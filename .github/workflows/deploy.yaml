@@ -1,27 +1,32 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger the workflow every time you push to the `main` branch
+  # 每次推送到main分支时触发工作流
   push:
     branches: [ main ]
-  # Allows you to run this workflow manually from the Actions tab on GitHub
+  # 允许从GitHub的Actions选项卡手动运行此工作流
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
+# 允许此作业克隆仓库并创建页面部署
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# 只允许一个并发部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
@@ -32,8 +37,11 @@ jobs:
       - name: Build Astro site
         run: npm run build
       
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
@@ -46,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1 
+        uses: actions/deploy-pages@v2 
