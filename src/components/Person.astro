@@ -1,0 +1,20 @@
+---
+interface Props {
+	name: string;
+	href: string;
+	image_src: string;
+	annotation?: string;
+}
+
+const { href, name, image_src, annotation } = Astro.props;
+---
+
+<div id={name} class="flex flex-col items-center group">
+	<a href={href} class="flex flex-col items-center transition-transform group-hover:transform group-hover:scale-105" target="_blank" rel="noopener">
+		<div class="relative w-32 h-32 mb-3 rounded-full overflow-hidden border-2 border-primary-100 shadow-soft">
+			<img src={image_src} alt={name} class="w-full h-full object-cover" />
+		</div>
+		<h3 class="font-medium text-secondary-900 text-center">{name}</h3>
+		{annotation && <p class="text-center text-xs text-secondary-600">{annotation}</p>}
+	</a>
+</div>

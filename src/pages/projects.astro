@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Container from '../components/ui/Container.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+---
+
+<Layout title="MLL Lab — Projects">
+	<main class="bg-background-light py-12">
+		<Container maxWidth="xl">
+			<h1 class="text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-12">Our Projects</h1>
+			
+			<div class="space-y-12">
+				<Card 
+					image_src="/assets/images/ragen.png" 
+					title="RAGEN" 
+					paper_link="" 
+					demo_link="" 
+					blog_link="https://github.com/RAGEN-AI/RAGEN?tab=readme-ov-file" 
+					github_link="http://github.com/ZihanWang314/ragen" 
+					body="We introduce RAGEN to train LLM reasoning agents via RL in multi-turn, stochastic environments. RAGEN is formulated with MDP and optimized through Reasoning-Interaction Chain Optimization (RICO). RAGEN-0.5B is trained across three agentic tasks, showing intriguing reasoning patterns."
+				/>
+
+				<Card 
+					image_src="/assets/images/vagen.png" 
+					title="VAGEN" 
+					blog_link="https://mll-lab.notion.site/vagen" 
+					paper_link="" 
+					demo_link="" 
+					github_link="https://github.com/RAGEN-AI/VAGEN" 
+					body="VAGEN is an RL framework improving VLM agent training with the TRICO algorithm. By selectively focusing on critical tokens and enhancing cross-turn credit assignment, TRICO outperforms prior methods on visual agentic tasks."
+				/>
+
+				<Card 
+					image_src="/assets/images/eai.png" 
+					title="EAI" 
+					paper_link="https://proceedings.neurips.cc/paper_files/paper/2024/file/b631da756d1573c24c9ba9c702fde5a9-Paper-Datasets_and_Benchmarks_Track.pdf" 
+					website_link="https://embodied-agent-interface.github.io/" 
+					github_link="https://github.com/embodied-agent-eval/embodied-agent-eval" 
+					body="Current evaluations of LLMs in embodied AI lack standardization and detailed error analysis. Our proposed benchmark addresses this with a unified interface for diverse tasks and LLM modules (planning, decomposition, etc.) and fine-grained metrics (identifying hallucination, affordance errors, etc.). This enables systematic assessment, pinpointing specific LLM limitations and strengths to inform more effective integration into embodied agents."
+				/>
+
+				<Card 
+					image_src="/assets/images/tstar.png" 
+					title="T*" 
+					paper_link="https://arxiv.org/pdf/2504.02259" 
+					demo_link="" 
+					website_link="https://www.lvhaystackai.com/" 
+					github_link="https://github.com/LongVideoHaystack/TStar" 
+					body="We introduce LongVideoHaystack, a 480-hour video temporal search dataset with 15,092 human-annotated instances, where SOTA scores 2.1% Temporal F1. Our temporal search framework T* boosts GPT-4o from 50.5% to 53.1% and LLaVA-OV from 56.5% to 62.4% on LongVideoBench XL."
+				/>
+			</div>
+		</Container>
+	</main>
+</Layout>
+
+<style>
+	main {
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	
+	.header {
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 0;
+		color: rgb(var(--accent))
+	}
+	
+</style>
+
+

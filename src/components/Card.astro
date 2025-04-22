@@ -1,0 +1,66 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	image_src: string;
+	paper_link?: string;
+	blog_link?: string;
+	demo_link?: string;
+	website_link?: string;
+	github_link?: string;
+	misc_text?: string;
+	href?: string;
+}
+
+const { href, title, body, image_src, paper_link, blog_link, demo_link, website_link, github_link, misc_text } = Astro.props;
+---
+
+<li id={title} class="list-none bg-white shadow-medium rounded-xl overflow-hidden border border-secondary-100 transition-transform hover:transform hover:scale-[1.01]">
+	<div class="flex flex-col md:flex-row items-center p-6">
+		<img src={image_src} alt={title} class="w-full md:w-1/3 md:h-60 object-contain mb-6 md:mb-0 md:mr-8"/>
+		<div class="flex flex-col p-2">
+			<h2 class="text-2xl md:text-3xl font-heading font-bold text-secondary-900 mb-3">
+				{title}	
+			</h2>
+			<p class="text-base md:text-lg text-secondary-700 mb-4">{body}</p>
+			<div class="flex flex-wrap gap-4">
+				{paper_link && <a class="font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center text-base" href={paper_link} target="_blank" rel="noopener">
+					Paper
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+					</svg>
+				</a>}
+				
+				{blog_link && <a class="font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center text-base" href={blog_link} target="_blank" rel="noopener">
+					Blog
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+					</svg>
+				</a>}
+				
+				{demo_link && <a class="font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center text-base" href={demo_link} target="_blank" rel="noopener">
+					Demo
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+					</svg>
+				</a>}
+				
+				{website_link && <a class="font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center text-base" href={website_link} target="_blank" rel="noopener">
+					Website
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+					</svg>
+				</a>}
+				
+				{github_link && <a class="font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center text-base" href={github_link} target="_blank" rel="noopener">
+					Code
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+					</svg>
+				</a>}
+				
+				{misc_text && <p class="font-medium text-secondary-600">{misc_text}</p>}
+			</div>
+		</div>
+	</div>
+</li>

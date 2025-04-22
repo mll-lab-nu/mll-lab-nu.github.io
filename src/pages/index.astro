@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import News from '../components/News/News.jsx';
+import Swiper from '../components/Swiper/swiper.astro';
+import Blob from '../components/Blob/blob.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+---
+
+<Layout title="MLL Lab — Home">
+	<main class="bg-background-light">
+		<!-- Hero Section -->
+		<section class="py-10 md:py-16">
+			<div class="container mx-auto px-4">
+				<div class="text-center">
+					<h1 class="text-4xl md:text-7xl font-heading font-bold mb-6 text-secondary-900">
+						<span class="text-primary-600">NU</span> Multi-modal<br>Learning <span class="text-primary-600">(MLL)</span> Lab
+					</h1>
+					
+					<p class="mx-auto max-w-3xl text-xl font-medium text-secondary-600 mb-8">
+						We develop intelligent language and multimodal models that reason, plan, and interact with the physical world. By integrating vision, robotics, and other modalities, we build trustworthy foundation models with spatial intelligence and compositional reasoning.
+					</p>
+					
+					<div class="relative mb-8">
+						<Blob />
+						<div class="z-10 relative">
+							<a href="https://github.com/RAGEN-AI/RAGEN" class="text-primary-600 font-medium hover:underline text-lg inline-flex items-center">
+								<b>Announcing RAGEN:</b> An Open-Source Framework for Training Interactive LLM Reasoning Agents with RL 🎉
+							</a>
+							
+							<div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+								<Button href="/projects" variant="primary" size="lg">Try Our Demos 🚀</Button>
+								
+								<a href="#about" class="z-10 inline-flex items-center text-primary-600 hover:underline font-medium self-center">
+									Learn More About MLL Lab
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1">
+										<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Projects Carousel Section -->
+				<div id="about" class="mt-6">
+					<SectionHeader 
+						title="🔍 Our Research" 
+						subtitle="Explore our latest projects and research in language models, multimodal learning, and AI systems"
+						centered={true}
+						className="mb-4"
+					/>
+					<Swiper />
+				</div>
+			</div>
+		</section>
+		
+		<!-- News Section -->
+		<section id="news" class="py-10 bg-secondary-50 mt-6">
+			<div class="container mx-auto px-4">
+				<SectionHeader 
+					title="📰 Latest News" 
+					centered={true}
+					className="mb-6"
+				/>
+				
+				<div class="max-w-4xl mx-auto">
+					<div class="bg-white shadow-medium rounded-xl border border-secondary-100 p-8">
+						<News client:load />
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.blob {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 0;
+	}
+</style>
+
+

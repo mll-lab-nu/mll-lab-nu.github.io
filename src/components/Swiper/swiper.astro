@@ -1,0 +1,217 @@
+---
+---
+
+<div class="swiper-container w-full flex justify-center items-center my-4">
+  <div class="swiper relative group mx-auto max-w-screen-2xl w-full">
+    <div class="swiper-wrapper mt-4" data-cursor="swipe">
+      <div class="swiper-slide">
+        <a href="https://github.com/RAGEN-AI/RAGEN">
+          <div class="hover:brightness-95 swiper-carousel-animate-opacity flex flex-col items-center">
+            <img src="/assets/images/ragen.png" alt="YelpBot Project" />
+            <div class="max-w-6xl mt-2 flex flex-col items-center">
+              <p class="text-2xl text-center font-semibold" style="color: #444444">
+                Training multi-turn LLM agents by reinforcement learning
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://github.com/RAGEN-AI/VAGEN">
+          <div class="hover:brightness-95 swiper-carousel-animate-opacity flex flex-col items-center">
+            <img src="/assets/images/vagen.png" alt="WikiChat Project" />
+            <div class="max-w-6xl mt-2 flex flex-col items-center">
+              <p class="text-2xl text-center font-semibold" style="color: #444444">
+                Training multi-turn VLM agents by reinforcement learning
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://embodied-agent-interface.github.io/">
+          <div class="hover:brightness-95 swiper-carousel-animate-opacity flex flex-col items-center">
+            <img src="/assets/images/eai.png" alt="Spinach Project" />
+            <div class="max-w-6xl mt-2 flex flex-col items-center">
+              <p class="text-2xl text-center font-semibold" style="color: #444444">
+                Benchmarking LLMs for embodied decision making
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://lvhaystackai.com/">
+          <div class="hover:brightness-95 swiper-carousel-animate-opacity flex flex-col items-center">
+            <img src="/assets/images/tstar.png" alt="Noora Project" />
+            <div class="max-w-6xl mt-2 flex flex-col items-center">
+              <p class="text-2xl text-center font-semibold" style="color: #444444">
+                Efficient temporal search framework for identifying key frames using VLMs
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="swiper-button-prev custom-prev-button"></div>
+    <div class="swiper-button-next custom-next-button"></div>
+  </div>
+</div>
+
+<style>
+  .swiper-slide {
+    width: 60%;
+    max-width: 600px;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: white;
+    background-color: rgba(31, 41, 55, 0.7);
+    border-radius: 9999px;
+    width: 40px;
+    height: 40px;
+    z-index: 20;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: rgba(31, 41, 55, 0.9);
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* 自定义箭头按钮位置 */
+  .custom-prev-button {
+    left: 1%;
+  }
+  
+  .custom-next-button {
+    right: 1%;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      font-size: 20px;
+    }
+    
+    /* 桌面端调整按钮位置 */
+    .custom-prev-button {
+      left: 2%;
+    }
+    
+    .custom-next-button {
+      right: 2%;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .custom-prev-button {
+      left: 5%;
+    }
+    
+    .custom-next-button {
+      right: 5%;
+    }
+  }
+  
+  /* 确保轮播容器有足够空间显示两侧按钮 */
+  .swiper-container {
+    overflow: visible;
+    position: relative;
+    padding: 0 20px;
+  }
+  
+  /* 确保中间的主要幻灯片突出显示 */
+  .swiper {
+    overflow: visible !important;
+  }
+</style>
+
+<script>
+  import { register } from 'swiper/element/bundle';
+  import Swiper from 'swiper';
+  import { Navigation, Autoplay } from 'swiper/modules';
+  import EffectCarousel from '../Swiper/effectcarousel.js';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import '../Swiper/swiper.css';
+
+  // 注册Swiper自定义元素
+  register();
+  
+  // 初始化函数
+  function initSwiper() {
+    try {
+      // 确保之前的swiper实例被销毁
+      const swiperContainer = document.querySelector('.swiper');
+      if (!swiperContainer) return;
+      
+      // 创建新的swiper实例
+      // @ts-ignore - 自定义效果模块会导致TypeScript错误，但实际可以正常工作
+      const swiper = new Swiper('.swiper', {
+        modules: [Navigation, Autoplay, EffectCarousel],
+        effect: 'carousel',
+        // @ts-ignore - 自定义效果参数
+        carouselEffect: {
+          opacityStep: 0.4,
+          scaleStep: 0.2,
+          sideSlides: 2,
+          rotate: false,
+        },
+        grabCursor: true,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        initialSlide: 0,
+        spaceBetween: 10,
+        speed: 500,
+        loop: true,
+        navigation: {
+          nextEl: '.custom-next-button',
+          prevEl: '.custom-prev-button',
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+      });
+      
+      // 监听导航按钮点击
+      const prevBtn = document.querySelector('.custom-prev-button');
+      const nextBtn = document.querySelector('.custom-next-button');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          swiper.slidePrev();
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          swiper.slideNext();
+        });
+      }
+      
+      // 确保slides正确显示
+      swiper.update();
+    } catch (error) {
+      console.error("Swiper初始化错误:", error);
+    }
+  }
+
+  // 在页面首次加载和每次导航后初始化
+  document.addEventListener('DOMContentLoaded', initSwiper);
+  document.addEventListener('astro:page-load', initSwiper);
+</script>

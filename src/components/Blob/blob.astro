@@ -1,0 +1,23 @@
+---
+// No need to import CSS as it's already included globally in Layout.astro
+---
+
+<div class="blob"></div>
+
+<script>
+  // 初始化函数，确保blob动画正常运行
+  function initBlobAnimation() {
+    const blob = document.querySelector('.blob') as HTMLElement;
+    if (blob) {
+      // Force a repaint to ensure CSS animations start
+      blob.style.animation = 'none';
+      void blob.offsetWidth; // Trigger reflow
+      blob.style.animation = ''; // Restore the animation
+    }
+  }
+
+  // 在页面首次加载和每次页面转换后都执行初始化
+  document.addEventListener('DOMContentLoaded', initBlobAnimation);
+  document.addEventListener('astro:page-load', initBlobAnimation);
+</script>
+

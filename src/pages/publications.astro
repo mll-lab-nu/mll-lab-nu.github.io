@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/ui/Container.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+const pubs = [
+	{
+		year: "2025",
+		publications: [
+			{
+				title: "Re-thinking Temporal Search for Long-Form Video Understanding",
+				link: "https://arxiv.org/abs/2504.02259",
+				authors: "Jinhui Ye*, Zihan Wang*, Haosen Sun, Keshigeyan Chandrasegaran, Zane Durante, Cristobal Eyzaguirre, Yonatan Bisk, Juan Carlos Niebles, Ehsan Adeli, Li Fei-Fei, Jiajun Wu, Manling Li",
+				conference_title: "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+				conference_misc: ", Tennessee, USA, June, 2025."
+			}
+		]
+	},
+	{
+		year: "2024",
+		publications: [
+			{
+				title: "Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making",
+				link: "https://proceedings.neurips.cc/paper_files/paper/2024/file/b631da756d1573c24c9ba9c702fde5a9-Paper-Datasets_and_Benchmarks_Track.pdf",
+				authors: "Manling Li*, Shiyu Zhao*, Qineng Wang*, Kangrui Wang*, Yu Zhou*, Sanjana Srivastava, Cem Gokmen, Tony Lee, Li Erran Li, Ruohan Zhang, Weiyu Liu, Percy Liang, Li Fei-Fei, Jiayuan Mao, Jiajun Wu",
+				note: ["NeurIPS 2024 DB Track (Oral Presentation)", "Best Paper Award at SoCalNLP 2024"],
+				conference_title: "Advances in Neural Information Processing Systems, 2024",
+				conference_misc: ", Vancouver, Canada, December, 2024.",
+			}
+		]
+	},
+	// {
+	// 	year:"2025",
+	// 	publications:[
+	// 		{
+	// 			title: "GenieWizard: Multimodal App Feature Discovery with Large Language Models",
+	// 			link: "https://almond-static.stanford.edu/papers/GenieWizard.pdf",
+	// 			authors: "Jackie (Junrui) Yang, Yingtian Shi, Chris Gu, Zhang Zheng, Anisha Jain, Tianshi Li, Monica Lam, and James A. Landay",
+	// 			note: ["Best Paper Honorable Mention"],
+	// 			conference_title: "Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems",
+	// 			conference_misc: ", Yokohama, Japan, April, 2025." 
+	// 		},
+	//  		{
+	//  			title: "Using Artificial Intelligence to Improve Empathetic Statements in Autistic Adolescents and Adults: A Randomized Clinical Trial",
+	// 			link: "https://pubmed.ncbi.nlm.nih.gov/39954218/",
+	//  			authors: "Koegel LK, Ponder E, Bruzzese T, Wang M, Semnani SJ, Chi N, Koegel BL, Lin TY, Swarnakar A, Lam MS",
+	//  			conference_title: "J Autism Dev Disord",
+	//  			conference_misc: ", Feb 15, 2025 doi: 10.1007/s10803-025-06734-x. Epub ahead of print. PMID: 39954218."
+	//  		},
+	// 		{
+	// 			title: "Into the Unknown Unknowns: Engaged Human Learning through Participation in Language Model Agent Conversations",
+	// 			link: "https://arxiv.org/abs/2408.15232",
+	// 			authors: "Yucheng Jiang, Yijia Shao, Dekun Ma, Sina J. Semnani, Monica S. Lam",
+	// 			conference_title: "The 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+	// 			conference_misc: ", Miami, Florida, November 12 –16, 2024."
+	// 		},
+	// 		{
+	// 			title: "SPINACH: SPARQL-Based Information Navigation for Challenging Real-World Questions",
+	// 			link: "https://arxiv.org/abs/2407.11417",
+	// 			authors: "Shicheng Liu*, Sina J. Semnani*, Harold Triedman, Jialiang Xu, Isaac Dan Zhao, Monica S. Lam",
+	// 			conference_title: "Findings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+	// 			conference_misc: ", Miami, Florida, November 12 –16, 2024."
+	// 		},
+	// 		{
+	// 			title: "Zero-shot Persuasive Chatbots with LLM-Generated Strategies and Information Retrieval",
+	// 			link: "https://arxiv.org/abs/2407.03585",
+	// 			authors: "Kazuaki Furumai, Roberto Legaspi, Julio Vizcarra, Yudai Yamazaki, Yasutaka Nishimura, Sina J. Semnani, Kazushi Ikeda, Weiyan Shi, Monica S. Lam",
+	// 			conference_title: "Findings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+	// 			conference_misc: ", Miami, Florida, November 12 –16, 2024."
+	// 		},
+	// 		{
+	// 			title: "SPAGHETTI: Open-Domain Question Answering from Heterogeneous Data Sources with Retrieval and Semantic Parsing",
+	// 			link: "https://arxiv.org/abs/2406.00562",
+	// 			authors: "Heidi C. Zhang, Sina J. Semnani, Farhad Ghassemi, Jialiang Xu, Shicheng Liu, Monica S. Lam",
+	// 			conference_title: "Findings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)",
+	// 			conference_misc: ", Bangkok, Thailand, August 11-16, 2024."
+	// 		},
+	// 		{
+	// 			title: "Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models",
+	// 			link: "https://arxiv.org/abs/2402.14207",
+	// 			authors: "Yijia Shao, Yucheng Jiang, Theodore A. Kanell, Peter Xu, Omar Khattab, Monica S. Lam",
+	// 			conference_title: "Proceedings of the North American Chapter of Association for Computational Linguistics (NAACL)",
+	// 			conference_misc: ", Mexico City, Mexico, June 16–21, 2024."
+	// 		},
+	// 		{
+	// 			title: "SUQL: Conversational Search over Structured and Unstructured Data with Large Language Models",
+	// 			link: "https://arxiv.org/abs/2311.09818",
+	// 			authors: "Shicheng Liu, Jialiang Xu, Wesley Tjangnaka, Sina J. Semnani, Chen Jie Yu, Monica S. Lam",
+	// 			conference_title: "Findings of the North American Chapter of Association for Computational Linguistics (NAACL)",
+	// 			conference_misc: ", Mexico City, Mexico, June 16–21, 2024."
+	// 		},
+	// 		{
+	// 			title: "ReactGenie: A Development Framework for Rich Multimodal Interactions Using Large Language Models",
+	// 			link: "https://jya.ng/reactgenie",
+	// 			authors: "Jackie (Junrui) Yang, Yingtian Shi, Yuhan Zhang, Karina Li, Daniel Wan Rosli, Anisha Jain, Shuning Zhang, Tianshi Li, James A. Landay, Monica S. Lam",
+	// 			conference_title: "Proceedings of the CHI Conference on Human Factors in Computing Systems (CHI '24)",
+	// 			conference_misc: ", Honolulu, HI, USA, May 11–16, 2024."
+	// 		},
+	// 		{
+	// 			title: "AMMA: Adaptive Multimodal Assistants Through Automated State Tracking and User Model-Directed Guidance Planning",
+	// 			link: "https://jya.ng/amma",
+	// 			authors: "Jackie (Junrui) Yang, Leping Qiu, Emmanuel Corona-Moreno, Louisa Shi, Hung Bui, Monica S. Lam, James A. Landay",
+	// 			conference_title: "2024 IEEE Conference Virtual Reality and 3D User Interfaces (VR)",
+	// 			conference_misc: ", Orlando, FL, March 16-21, 2024."
+	// 		}
+	// 	]
+	// }
+]
+
+---
+
+<Layout title="MLL Lab — Publications">
+	<main class="bg-background-light py-12">
+		<Container maxWidth="xl">
+			<h1 class="text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-12">Publications</h1>
+			
+			<div class="max-w-4xl mx-auto">
+				{pubs.map((item) => (
+					<section class="mb-12">
+						<h2 class="text-2xl font-heading font-bold text-primary-700 mb-6 pb-2 border-b border-secondary-200">{item.year}</h2>
+						<ul class="space-y-8">
+							{item.publications.map((pub) => ( 
+								<li class="bg-white p-6 rounded-xl shadow-soft">
+									<a
+										href={pub.link}
+										class="text-xl font-heading font-semibold text-primary-600 hover:underline"
+										target="_blank"
+										rel="noopener"
+									>
+										{pub.title}
+									</a>
+									<p class="text-secondary-700 my-2">{pub.authors}</p>
+									
+									{pub.note && 
+										<div class="my-2">
+											{Array.isArray(pub.note) 
+												? pub.note.map((noteItem) => (
+													<span class="inline-block bg-accent-100 text-accent-700 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">
+														{noteItem}
+													</span>
+												))
+												: <span class="inline-block bg-accent-100 text-accent-700 px-3 py-1 rounded-full text-sm font-medium">
+													{pub.note}
+												</span>
+											}
+										</div>
+									}
+									
+									<p class="text-secondary-600 text-sm">
+										<span>In</span> <span class="italic">{pub.conference_title}</span>{pub.conference_misc}
+									</p>
+								</li>
+							))}
+						</ul>
+					</section>
+				))}
+			</div>
+		</Container>
+	</main>
+</Layout>
+
+<style>
+	main {
+		color: rgb(var(--accent-bright));
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	
+	.header {
+		
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 0;
+		color: rgb(var(--accent))
+
+	}
+	p {
+		color: #444
+	}
+	.text-red-600 p {
+		color: #dc2626;
+	}
+	
+</style>
