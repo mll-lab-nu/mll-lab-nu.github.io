@@ -1,13 +1,13 @@
 ---
-// 这个文件处理 /releases/... 路径的重定向
+// This file handles redirects for the /releases/... path
 export function getStaticPaths() {
-  // 由于我们只是想重定向，可以返回一个空数组
-  // GitHub Pages 不支持服务器端重定向，但我们可以创建一个客户端重定向页面
+  // Since we only want to redirect, we can return an empty array
+  // GitHub Pages doesn't support server-side redirects, but we can create a client-side redirect page
   return [];
 }
 
-// 注意：由于返回空数组，此页面实际上不会被生成
-// 您需要修改 astro.config.mjs 的 redirects 配置
+// Note: Due to returning an empty array, this page won't actually be generated
+// You need to modify the redirects configuration in astro.config.mjs
 ---
 
 <html>
@@ -17,11 +17,11 @@ export function getStaticPaths() {
   <title>Redirecting...</title>
 </head>
 <body>
-  <p>如果您没有被自动重定向，<a href="https://crowdie.stanford.edu/">点击这里</a>。</p>
+  <p>If you are not automatically redirected, <a href="https://crowdie.stanford.edu/">click here</a>.</p>
   <script>
-    // 获取当前路径
+    // Get the current path
     const path = window.location.pathname.replace('/releases/', '');
-    // 重定向到目标网站
+    // Redirect to the target website
     window.location.href = `https://crowdie.stanford.edu/${path}`;
   </script>
 </body>

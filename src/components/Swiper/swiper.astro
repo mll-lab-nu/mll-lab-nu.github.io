@@ -86,7 +86,7 @@
     font-weight: bold;
   }
   
-  /* 自定义箭头按钮位置 */
+  /* Custom arrow button positions */
   .custom-prev-button {
     left: 1%;
   }
@@ -107,7 +107,7 @@
       font-size: 20px;
     }
     
-    /* 桌面端调整按钮位置 */
+    /* Desktop button position adjustments */
     .custom-prev-button {
       left: 2%;
     }
@@ -127,14 +127,14 @@
     }
   }
   
-  /* 确保轮播容器有足够空间显示两侧按钮 */
+  /* Ensure carousel container has enough space to display buttons on both sides */
   .swiper-container {
     overflow: visible;
     position: relative;
     padding: 0 20px;
   }
   
-  /* 确保中间的主要幻灯片突出显示 */
+  /* Ensure the main slide in the center stands out */
   .swiper {
     overflow: visible !important;
   }
@@ -149,22 +149,22 @@
   import 'swiper/css/navigation';
   import '../Swiper/swiper.css';
 
-  // 注册Swiper自定义元素
+  // Register Swiper custom element
   register();
   
-  // 初始化函数
+  // Initialization function
   function initSwiper() {
     try {
-      // 确保之前的swiper实例被销毁
+      // Ensure previous swiper instances are destroyed
       const swiperContainer = document.querySelector('.swiper');
       if (!swiperContainer) return;
       
-      // 创建新的swiper实例
-      // @ts-ignore - 自定义效果模块会导致TypeScript错误，但实际可以正常工作
+      // Create new swiper instance
+      // @ts-ignore - Custom effect module may cause TypeScript error, but works fine in practice
       const swiper = new Swiper('.swiper', {
         modules: [Navigation, Autoplay, EffectCarousel],
         effect: 'carousel',
-        // @ts-ignore - 自定义效果参数
+        // @ts-ignore - Custom effect parameters
         carouselEffect: {
           opacityStep: 0.4,
           scaleStep: 0.2,
@@ -188,7 +188,7 @@
         },
       });
       
-      // 监听导航按钮点击
+      // Monitor navigation button clicks
       const prevBtn = document.querySelector('.custom-prev-button');
       const nextBtn = document.querySelector('.custom-next-button');
       
@@ -204,14 +204,14 @@
         });
       }
       
-      // 确保slides正确显示
+      // Ensure slides display correctly
       swiper.update();
     } catch (error) {
-      console.error("Swiper初始化错误:", error);
+      console.error("Swiper initialization error:", error);
     }
   }
 
-  // 在页面首次加载和每次导航后初始化
+  // Initialize on first page load and after each navigation
   document.addEventListener('DOMContentLoaded', initSwiper);
   document.addEventListener('astro:page-load', initSwiper);
 </script>

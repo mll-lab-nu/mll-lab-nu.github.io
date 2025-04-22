@@ -128,12 +128,12 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // 在页面加载和页面导航完成后重新初始化导航栏交互
+  // Reinitialize navbar interactions after page load and page navigation
   document.addEventListener('DOMContentLoaded', initNavInteractions);
   document.addEventListener('astro:page-load', initNavInteractions);
   
   function initNavInteractions() {
-    // 处理移动端菜单
+    // Handle mobile menu
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
