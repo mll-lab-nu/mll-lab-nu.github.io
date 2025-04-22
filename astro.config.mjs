@@ -8,8 +8,5 @@ export default defineConfig({
   integrations: [react(), tailwind()],
   output: "static",
   site: "https://mll-lab-nu.github.io",
-  base: "/",
-  redirects: {
-    '/releases/[...path]': 'https://crowdie.stanford.edu/[...path]'
-  }
+  base: "/"
 });

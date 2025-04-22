@@ -1,4 +1,4 @@
-import styles from "./news.css";
+import "./news.css";
 
 const newsItems = [
   {
