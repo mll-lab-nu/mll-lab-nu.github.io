@@ -85,17 +85,17 @@ const currentPath = Astro.url.pathname;
 				href="/"
 				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
 			>
-				<span class="font-bold text-primary-600">M</span>ulti-moda<span class="font-bold text-primary-600">L&nbsp;L</span>earning Lab
+				<span class="font-bold text-primary-600">M</span>achine&nbsp;<span class="font-bold text-primary-600">L</span>earning&nbsp;&&nbsp;<span class="font-bold text-primary-600">L</span>anguage Lab
 			</a>
 			
-			<button id="menu-toggle" class="text-secondary-800">
+			<button id="menu-toggle" class="text-secondary-800 lg:hidden">
 				<MenuIcon class="w-6 h-6" />
 			</button>
 		</div>
 		
 		<!-- Mobile menu -->
 		<div class="lg:hidden">
-			<div id="mobile-menu" class="hidden pt-4 pb-2">
+			<div id="mobile-menu" class="pt-4 pb-2">
 				<nav>
 					<ul class="flex flex-col space-y-2">
 						{
@@ -133,14 +133,11 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('astro:page-load', initNavInteractions);
   
   function initNavInteractions() {
-    // Handle mobile menu
+    // No need to toggle visibility since we're keeping the menu visible
+    // Just keeping the hooks in place for future enhancements
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
+    // No toggle functionality needed
   }
 </script>
