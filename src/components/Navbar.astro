@@ -79,25 +79,22 @@ const currentPath = Astro.url.pathname;
 		</div>
 		
 		<!-- Mobile navigation -->
-		<div class="flex lg:hidden items-center justify-between w-full">
-			<a
-				aria-label="Home"
-				href="/"
-				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
-			>
-				<span class="font-bold text-primary-600">M</span>achine&nbsp;<span class="font-bold text-primary-600">L</span>earning&nbsp;&&nbsp;<span class="font-bold text-primary-600">L</span>anguage Lab
-			</a>
+		<div class="flex flex-col lg:hidden w-full">
+			<!-- Header row -->
+			<div class="flex items-center justify-between w-full">
+				<a
+					aria-label="Home"
+					href="/"
+					class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
+				>
+					<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab
+				</a>
+			</div>
 			
-			<button id="menu-toggle" class="text-secondary-800 lg:hidden">
-				<MenuIcon class="w-6 h-6" />
-			</button>
-		</div>
-		
-		<!-- Mobile menu -->
-		<div class="lg:hidden">
-			<div id="mobile-menu" class="pt-4 pb-2">
+			<!-- Navigation row with scrollable menu -->
+			<div class="w-full overflow-x-auto py-2">
 				<nav>
-					<ul class="flex flex-col space-y-2">
+					<ul class="flex space-x-4 whitespace-nowrap">
 						{
 							menuitems.map((item) => {
 								const isActive = currentPath === item.path || 
@@ -107,7 +104,7 @@ const currentPath = Astro.url.pathname;
 										<a
 											aria-label={item.title}
 											href={item.path}
-											class={`block py-2 text-base font-bold ${isActive 
+											class={`text-sm font-bold px-2 py-1 transition-colors ${isActive 
 												? "text-primary-600" 
 												: "text-secondary-600 hover:text-primary-600"}`}
 										>
@@ -117,8 +114,10 @@ const currentPath = Astro.url.pathname;
 								);
 							})
 						}
-						<li class="pt-2">
-							<Button href="/projects" variant="primary" size="sm" className="w-full">Try Our Demos 🚀</Button>
+						<li>
+							<a href="/projects" class="text-sm font-bold px-3 py-1 bg-primary-600 text-white rounded-md">
+								Demos
+							</a>
 						</li>
 					</ul>
 				</nav>
@@ -128,16 +127,11 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // Reinitialize navbar interactions after page load and page navigation
-  document.addEventListener('DOMContentLoaded', initNavInteractions);
-  document.addEventListener('astro:page-load', initNavInteractions);
-  
-  function initNavInteractions() {
-    // No need to toggle visibility since we're keeping the menu visible
-    // Just keeping the hooks in place for future enhancements
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    // No toggle functionality needed
-  }
+  // No need for menu toggle functionality since menu is always visible
+  document.addEventListener('DOMContentLoaded', function() {
+    // Future mobile enhancements can be added here if needed
+  });
+  document.addEventListener('astro:page-load', function() {
+    // Future mobile enhancements can be added here if needed
+  });
 </script>
