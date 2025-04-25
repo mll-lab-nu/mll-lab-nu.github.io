@@ -79,22 +79,19 @@ const currentPath = Astro.url.pathname;
 		</div>
 		
 		<!-- Mobile navigation -->
-		<div class="flex flex-col lg:hidden w-full">
-			<!-- Header row -->
-			<div class="flex items-center justify-between w-full">
-				<a
-					aria-label="Home"
-					href="/"
-					class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
-				>
-					<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab
-				</a>
-			</div>
+		<div class="flex lg:hidden items-center justify-between w-full">
+			<a
+				aria-label="Home"
+				href="/"
+				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
+			>
+				<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab
+			</a>
 			
-			<!-- Navigation row with scrollable menu -->
-			<div class="w-full overflow-x-auto py-2">
+			<!-- Mobile menu in single line -->
+			<div class="overflow-x-auto">
 				<nav>
-					<ul class="flex space-x-4 whitespace-nowrap">
+					<ul class="flex space-x-3 whitespace-nowrap">
 						{
 							menuitems.map((item) => {
 								const isActive = currentPath === item.path || 
@@ -104,7 +101,7 @@ const currentPath = Astro.url.pathname;
 										<a
 											aria-label={item.title}
 											href={item.path}
-											class={`text-sm font-bold px-2 py-1 transition-colors ${isActive 
+											class={`text-xs font-bold px-2 py-1 transition-colors ${isActive 
 												? "text-primary-600" 
 												: "text-secondary-600 hover:text-primary-600"}`}
 										>
@@ -115,7 +112,7 @@ const currentPath = Astro.url.pathname;
 							})
 						}
 						<li>
-							<a href="/projects" class="text-sm font-bold px-3 py-1 bg-primary-600 text-white rounded-md">
+							<a href="/projects" class="text-xs font-bold px-2 py-1 bg-primary-600 text-white rounded-md">
 								Demos
 							</a>
 						</li>
