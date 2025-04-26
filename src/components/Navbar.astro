@@ -26,7 +26,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="py-3 shadow-soft bg-white sticky top-0 z-50">
-	<div class="container mx-auto px-4">
+	<div class="container mx-auto px-2 sm:px-4">
 		<!-- Desktop navigation -->
 		<div class="hidden lg:flex items-center justify-between w-full">
 			<!-- Left side: Lab name -->
@@ -83,15 +83,15 @@ const currentPath = Astro.url.pathname;
 			<a
 				aria-label="Home"
 				href="/"
-				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
+				class="shrink-0 py-1 text-base font-heading font-semibold hover:text-primary-600 transition-colors"
 			>
-				<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab
+				<span class="font-bold text-primary-600">MLL</span>
 			</a>
 			
 			<!-- Mobile menu in single line -->
-			<div class="overflow-x-auto">
-				<nav>
-					<ul class="flex space-x-3 whitespace-nowrap">
+			<div class="overflow-x-auto pl-1 flex-grow">
+				<nav class="flex justify-end">
+					<ul class="flex space-x-1 sm:space-x-2 whitespace-nowrap">
 						{
 							menuitems.map((item) => {
 								const isActive = currentPath === item.path || 
@@ -101,7 +101,7 @@ const currentPath = Astro.url.pathname;
 										<a
 											aria-label={item.title}
 											href={item.path}
-											class={`text-xs font-bold px-2 py-1 transition-colors ${isActive 
+											class={`text-xs sm:text-sm font-medium px-1.5 py-1 rounded transition-colors ${isActive 
 												? "text-primary-600" 
 												: "text-secondary-600 hover:text-primary-600"}`}
 										>
@@ -112,7 +112,7 @@ const currentPath = Astro.url.pathname;
 							})
 						}
 						<li>
-							<a href="/projects" class="text-xs font-bold px-2 py-1 bg-primary-600 text-white rounded-md">
+							<a href="/projects" class="text-xs sm:text-sm font-medium px-1.5 py-1 bg-primary-600 text-white rounded">
 								Demos
 							</a>
 						</li>

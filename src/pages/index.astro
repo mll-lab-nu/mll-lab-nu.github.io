@@ -10,35 +10,35 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 <Layout title="MLL Lab — Home">
 	<main class="bg-background-light">
 		<!-- Hero Section -->
-		<section class="py-10 md:py-16">
-			<div class="container mx-auto px-4">
+		<section class="py-6 sm:py-10 md:py-16">
+			<div class="container mx-auto px-3 sm:px-4">
 				<div class="text-center">
-					<h1 class="text-4xl md:text-7xl font-heading font-bold mb-6 text-secondary-900">
+					<h1 class="text-3xl sm:text-4xl md:text-7xl font-heading font-bold mb-4 sm:mb-6 text-secondary-900">
 						<span class="text-primary-600">MLL</span> Lab
 						<br>
 						<span class="text-primary-600">M</span>achine <span class="text-primary-600">L</span>earning and <span class="text-primary-600">L</span>anguage 
 					</h1>
 					
-					<p class="mx-auto max-w-3xl text-xl font-medium text-secondary-600 mb-8">
+					<p class="mx-auto max-w-3xl text-base sm:text-lg md:text-xl font-medium text-secondary-600 mb-6 sm:mb-8 px-2">
 						We develop intelligent language + X (vision, robotics, etc) models that reason, plan, and interact with the physical world. 
 						<!-- By integrating vision, robotics, and other modalities, we build trustworthy foundation models with spatial intelligence and compositional reasoning. -->
 					</p>
 					
-					<div class="relative mb-8">
+					<div class="relative mb-6 sm:mb-8">
 						<Blob />
 						<div class="z-10 relative">
 							<!-- <a href="https://github.com/RAGEN-AI/RAGEN" class="text-primary-600 font-medium hover:underline text-lg inline-flex items-center">
 								<b>Announcing RAGEN:</b>&nbsp;Training RL Agents   
 							</a> -->
 							
-							<div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+							<div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-4 sm:mt-6">
 								<Button href="/joinus" variant="primary" size="lg">
 									Join Us 
 								</Button>
 								
-								<a href="https://ragen-ai.github.io" class="z-10 inline-flex items-center text-primary-600 hover:underline font-medium self-center">
+								<a href="https://ragen-ai.github.io" class="z-10 inline-flex items-center text-primary-600 hover:underline font-medium self-center text-sm sm:text-base">
 									Announcing&nbsp;<b>RAGEN</b>:&nbsp;Training RL Agents - Github ⭐️ 1.6k
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
 										<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
 									</svg>
 								</a>
@@ -48,12 +48,12 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 				</div>
 				
 				<!-- Projects Carousel Section -->
-				<div id="about" class="mt-6">
+				<div id="about" class="mt-4 sm:mt-6">
 					<SectionHeader 
 						title="" 
 						subtitle=""
 						centered={true}
-						className="mb-4"
+						className="mb-2 sm:mb-4"
 					/>
 					<Swiper />
 				</div>
@@ -61,16 +61,16 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 		</section>
 		
 		<!-- News Section -->
-		<section id="news" class="py-10 bg-secondary-50 mt-6">
-			<div class="container mx-auto px-4">
+		<section id="news" class="py-6 sm:py-10 bg-secondary-50 mt-4 sm:mt-6">
+			<div class="container mx-auto px-3 sm:px-4">
 				<SectionHeader 
 					title="📰 Latest News" 
 					centered={true}
-					className="mb-6"
+					className="mb-4 sm:mb-6"
 				/>
 				
 				<div class="max-w-4xl mx-auto">
-					<div class="bg-white shadow-medium rounded-xl border border-secondary-100 p-8">
+					<div class="bg-white shadow-medium rounded-xl border border-secondary-100 p-4 sm:p-6 md:p-8">
 						<News client:load />
 					</div>
 				</div>

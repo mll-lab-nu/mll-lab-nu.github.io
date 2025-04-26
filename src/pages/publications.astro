@@ -878,36 +878,36 @@ const pubs = [
 ---
 
 <Layout title="MLL Lab — Publications">
-	<main class="bg-background-light py-12">
+	<main class="bg-background-light py-6 sm:py-12">
 		<Container maxWidth="xl">
-			<h1 class="text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-12">Publications</h1>
+			<h1 class="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-6 sm:mb-12">Publications</h1>
 			
-			<div class="max-w-4xl mx-auto">
+			<div class="max-w-4xl mx-auto px-2 sm:px-0">
 				{pubs.map((item) => (
-					<section class="mb-12">
-						<h2 class="text-2xl font-heading font-bold text-primary-700 mb-6 pb-2 border-b border-secondary-200">{item.year}</h2>
-						<ul class="space-y-8">
+					<section class="mb-6 sm:mb-12">
+						<h2 class="text-xl sm:text-2xl font-heading font-bold text-primary-700 mb-3 sm:mb-6 pb-2 border-b border-secondary-200">{item.year}</h2>
+						<ul class="space-y-4 sm:space-y-8">
 							{item.publications.map((pub) => ( 
-								<li class="bg-white p-6 rounded-xl shadow-soft">
+								<li class="bg-white p-3 sm:p-4 md:p-6 rounded-xl shadow-soft">
 									<a
 										href={pub.link}
-										class="text-xl font-heading font-semibold text-primary-600 hover:underline"
+										class="text-lg sm:text-xl font-heading font-semibold text-primary-600 hover:underline"
 										target="_blank"
 										rel="noopener"
 									>
 										{pub.title}
 									</a>
-									<p class="text-secondary-700 my-2">{pub.authors}</p>
+									<p class="text-sm sm:text-base text-secondary-700 my-1 sm:my-2">{pub.authors}</p>
 									
 									{pub.note && 
-										<div class="my-2">
+										<div class="my-1 sm:my-2">
 											{Array.isArray(pub.note) 
 												? pub.note.map((noteItem) => (
-													<span class="inline-block bg-accent-100 text-accent-700 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">
+													<span class="inline-block bg-accent-100 text-accent-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium mr-1.5 sm:mr-2 mb-1.5 sm:mb-2">
 														{noteItem}
 													</span>
 												))
-												: <span class="inline-block bg-accent-100 text-accent-700 px-3 py-1 rounded-full text-sm font-medium">
+												: <span class="inline-block bg-accent-100 text-accent-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium">
 													{pub.note}
 												</span>
 											}
@@ -915,94 +915,94 @@ const pubs = [
 									}
 									
 									{pub.resources && 
-										<div class="flex flex-wrap gap-2 my-3">
+										<div class="flex flex-wrap gap-1.5 sm:gap-2 my-2 sm:my-3">
 											{pub.resources.pdf && 
-												<a href={pub.resources.pdf} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.pdf} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													PDF
 												</a>
 											}
 											{pub.resources.code && 
-												<a href={pub.resources.code} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.code} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Code
 												</a>
 											}
 											{pub.resources.website && 
-												<a href={pub.resources.website} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.website} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Website
 												</a>
 											}
 											{pub.resources.data && 
-												<a href={pub.resources.data} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.data} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Data
 												</a>
 											}
 											{pub.resources.blog && 
-												<a href={pub.resources.blog} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.blog} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Blog
 												</a>
 											}
 											{pub.resources["tl;dr"] && 
-												<a href={pub.resources["tl;dr"]} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources["tl;dr"]} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													TL;DR
 												</a>
 											}
 											{pub.resources.demo && 
-												<a href={pub.resources.demo} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.demo} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Demo
 												</a>
 											}
 											{pub.resources.slides && 
-												<a href={pub.resources.slides} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.slides} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Slides
 												</a>
 											}
 											{pub.resources.poster && 
-												<a href={pub.resources.poster} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.poster} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Poster
 												</a>
 											}
 											{pub.resources.pypi && 
-												<a href={pub.resources.pypi} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.pypi} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													PyPi
 												</a>
 											}
 											{pub.resources.docker && 
-												<a href={pub.resources.docker} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.docker} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Docker
 												</a>
 											}
 											{pub.resources.docs && 
-												<a href={pub.resources.docs} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.docs} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Docs
 												</a>
 											}
 											{pub.resources.video && 
-												<a href={pub.resources.video} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.video} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Video
 												</a>
 											}
 											{pub.resources.project && 
-												<a href={pub.resources.project} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.project} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Project
 												</a>
 											}
 											{pub.resources.huggingface && 
-												<a href={pub.resources.huggingface} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.huggingface} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													HuggingFace
 												</a>
 											}
 											{pub.resources.arxiv && 
-												<a href={pub.resources.arxiv} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.arxiv} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													arXiv
 												</a>
 											}
 											{pub.resources.openreview && 
-												<a href={pub.resources.openreview} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.openreview} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													OpenReview
 												</a>
 											}
 											{pub.resources.github && 
-												<a href={pub.resources.github} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+												<a href={pub.resources.github} class="inline-flex items-center justify-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													GitHub
 												</a>
 											}
