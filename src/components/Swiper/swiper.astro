@@ -104,8 +104,8 @@
         <div class="swiper-slide">
           <a href="https://www.youtube.com/watch?v=jyB5LcEQyCI" target="_blank" rel="noopener">
             <div class="hover:brightness-95 swiper-carousel-animate-opacity flex flex-col items-center">
-              <div class="rounded-xl shadow-lg overflow-hidden relative w-full h-[180px] md:h-[220px] aspect-video">
-                <img src="https://img.youtube.com/vi/jyB5LcEQyCI/maxresdefault.jpg" alt="AAAI 2025 New Faculty Highlights" class="w-full h-full object-cover" />
+              <div class="rounded-xl shadow-lg overflow-hidden relative w-full aspect-video">
+                <img src="https://img.youtube.com/vi/jyB5LcEQyCI/maxresdefault.jpg" alt="AAAI 2025 New Faculty Highlights" class="w-full object-cover" />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="w-16 h-16 sm:w-20 sm:h-20 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-10 h-10 sm:w-12 sm:h-12">
@@ -240,6 +240,22 @@
     .custom-next-button {
       right: 5%;
     }
+  }
+
+  /* Additional styles for YouTube/video cards */
+  .swiper-slide a div .aspect-video {
+    width: 100%;
+    height: auto;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+  }
+  
+  .swiper-slide a div .aspect-video img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>
 
