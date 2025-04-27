@@ -30,13 +30,13 @@ const currentPath = Astro.url.pathname;
 		<!-- Desktop navigation -->
 		<div class="hidden lg:flex items-center justify-between w-full">
 			<!-- Left side: Lab name -->
-			<div>
+			<div class="min-w-[200px]">
 				<a
 					aria-label="Home"
 					href="/"
 					class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
 				>
-					<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab&nbsp;-&nbsp;<span class="font-bold text-primary-600">M</span>achine&nbsp;<span class="font-bold text-primary-600">L</span>earning&nbsp;&&nbsp;<span class="font-bold text-primary-600">L</span>anguage 
+					<span class="font-bold text-primary-600">MLL</span>&nbsp;-&nbsp;<span class="font-bold text-primary-600">M</span>achine&nbsp;<span class="font-bold text-primary-600">L</span>earning&nbsp;&&nbsp;<span class="font-bold text-primary-600">L</span>anguage 
 				</a>
 			</div>
 			
@@ -83,13 +83,13 @@ const currentPath = Astro.url.pathname;
 			<a
 				aria-label="Home"
 				href="/"
-				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
+				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors min-w-[40px]"
 			>
-				<span class="font-bold text-primary-600">MLL</span>&nbsp;Lab
+				<span class="font-bold text-primary-600">MLL</span>
 			</a>
 			
-			<!-- Mobile menu in single line -->
-			<div class="overflow-x-auto">
+			<!-- Mobile menu in single line with fixed widths -->
+			<div class="overflow-x-auto no-scrollbar">
 				<nav>
 					<ul class="flex space-x-3 whitespace-nowrap">
 						{
@@ -97,7 +97,7 @@ const currentPath = Astro.url.pathname;
 								const isActive = currentPath === item.path || 
 									(item.path !== '/' && currentPath.startsWith(item.path));
 								return (
-									<li>
+									<li class="flex-shrink-0">
 										<a
 											aria-label={item.title}
 											href={item.path}
@@ -111,7 +111,7 @@ const currentPath = Astro.url.pathname;
 								);
 							})
 						}
-						<li>
+						<li class="flex-shrink-0">
 							<a href="/projects" class="text-xs font-bold px-2 py-1 bg-primary-600 text-white rounded-md">
 								Demos
 							</a>
@@ -122,6 +122,24 @@ const currentPath = Astro.url.pathname;
 		</div>
 	</div>
 </header>
+
+<style>
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+  
+  /* Ensure the navbar doesn't resize */
+  header {
+    min-height: 64px;
+    height: auto;
+  }
+</style>
 
 <script>
   // No need for menu toggle functionality since menu is always visible
