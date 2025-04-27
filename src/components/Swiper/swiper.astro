@@ -130,8 +130,14 @@
 
 <style>
   .swiper-slide {
-    width: 60%;
+    width: 90%;
     max-width: 600px;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-slide {
+      width: 60%;
+    }
   }
   
   .swiper-button-prev,
@@ -139,9 +145,17 @@
     color: white;
     background-color: rgba(31, 41, 55, 0.7);
     border-radius: 9999px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     z-index: 20;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 40px;
+      height: 40px;
+    }
   }
   
   .swiper-button-prev:hover,
@@ -151,31 +165,27 @@
 
   .swiper-button-prev:after,
   .swiper-button-next:after {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      font-size: 18px;
+    }
   }
   
   /* Custom arrow button positions */
   .custom-prev-button {
-    left: 1%;
+    left: 0;
   }
   
   .custom-next-button {
-    right: 1%;
+    right: 0;
   }
   
   @media (min-width: 768px) {
-    .swiper-button-prev,
-    .swiper-button-next {
-      width: 48px;
-      height: 48px;
-    }
-    
-    .swiper-button-prev:after,
-    .swiper-button-next:after {
-      font-size: 20px;
-    }
-    
     /* Desktop button position adjustments */
     .custom-prev-button {
       left: 2%;
@@ -200,7 +210,13 @@
   .swiper-container {
     overflow: visible;
     position: relative;
-    padding: 0 20px;
+    padding: 0 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-container {
+      padding: 0 20px;
+    }
   }
   
   /* Ensure the main slide in the center stands out */
@@ -236,8 +252,8 @@
         // @ts-ignore - Custom effect parameters
         carouselEffect: {
           opacityStep: 0.4,
-          scaleStep: 0.2,
-          sideSlides: 2,
+          scaleStep: 0.1,
+          sideSlides: 1,
           rotate: false,
         },
         grabCursor: true,
@@ -255,6 +271,18 @@
           delay: 4000,
           disableOnInteraction: false,
         },
+        breakpoints: {
+          // when window width is >= 768px
+          768: {
+            // @ts-ignore - Custom effect parameters
+            carouselEffect: {
+              opacityStep: 0.4,
+              scaleStep: 0.2,
+              sideSlides: 2,
+              rotate: false,
+            },
+          }
+        }
       });
       
       // Monitor navigation button clicks
