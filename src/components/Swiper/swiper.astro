@@ -2,7 +2,7 @@
 ---
 
 <div class="swiper-container w-full flex justify-center items-center my-4">
-  <div class="swiper relative group mx-auto w-full" style="height: 300px;">
+  <div class="swiper relative group mx-auto w-full">
     <div class="swiper-wrapper mt-4" data-cursor="swipe">
       <div class="swiper-slide">
         <a href="https://ragen-ai.github.io/">
@@ -130,17 +130,14 @@
 
 <style>
   .swiper-slide {
-    width: 280px !important;
-    height: 280px !important;
+    width: 280px;
+    height: auto;
     max-width: none;
-    transform: none !important;
-    transition: opacity 0.3s ease !important;
   }
   
   @media (min-width: 768px) {
     .swiper-slide {
-      width: 400px !important;
-      height: 350px !important;
+      width: 400px;
     }
   }
   
@@ -215,6 +212,7 @@
     overflow: visible;
     position: relative;
     padding: 0 10px;
+    width: 100%;
   }
   
   @media (min-width: 768px) {
@@ -225,25 +223,8 @@
   
   /* Ensure the main slide in the center stands out */
   .swiper {
-    overflow: hidden !important;
-    height: 300px;
-  }
-  
-  @media (min-width: 768px) {
-    .swiper {
-      height: 350px;
-    }
-  }
-  
-  /* Force fixed size for slide content */
-  .swiper-carousel-animate-opacity {
-    height: 100%;
-    transform: none !important;
-  }
-  
-  .swiper-wrapper {
-    align-items: center;
-    height: 100%;
+    overflow: visible !important;
+    width: 100%;
   }
 </style>
 
@@ -267,20 +248,24 @@
       if (!swiperContainer) return;
       
       // Create new swiper instance
+      // @ts-ignore - Custom effect module may cause TypeScript error, but works fine in practice
       const swiper = new Swiper('.swiper', {
         modules: [Navigation, Autoplay, EffectCarousel],
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
+        effect: 'carousel',
+        // @ts-ignore - Custom effect parameters
+        carouselEffect: {
+          opacityStep: 0.4,
+          scaleStep: 0,
+          sideSlides: 1,
+          rotate: false,
         },
-        grabCursor: false,
-        slidesPerView: 1,
+        grabCursor: true,
+        slidesPerView: 'auto',
         centeredSlides: true,
         initialSlide: 0,
-        spaceBetween: 0,
-        speed: 300,
+        spaceBetween: 10,
+        speed: 500,
         loop: true,
-        watchSlidesProgress: false,
         navigation: {
           nextEl: '.custom-next-button',
           prevEl: '.custom-prev-button',
@@ -289,13 +274,16 @@
           delay: 4000,
           disableOnInteraction: false,
         },
-        preventInteractionOnTransition: true,
-        on: {
-          beforeTransitionStart: function() {
-            document.body.classList.add('swiper-transitioning');
-          },
-          transitionEnd: function() {
-            document.body.classList.remove('swiper-transitioning');
+        breakpoints: {
+          // when window width is >= 768px
+          768: {
+            // @ts-ignore - Custom effect parameters
+            carouselEffect: {
+              opacityStep: 0.4,
+              scaleStep: 0,
+              sideSlides: 2,
+              rotate: false,
+            },
           }
         }
       });
