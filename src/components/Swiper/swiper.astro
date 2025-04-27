@@ -212,6 +212,9 @@
     overflow: visible;
     position: relative;
     padding: 0 10px;
+    width: 100%;
+    min-width: 100%;
+    flex-shrink: 0;
   }
   
   @media (min-width: 768px) {
@@ -223,6 +226,13 @@
   /* Ensure the main slide in the center stands out */
   .swiper {
     overflow: visible !important;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* Force the swiper wrapper to take full width */
+  .swiper-wrapper {
+    width: 100%; 
   }
 </style>
 
