@@ -1,25 +1,4 @@
 ---
-// Mind Cube project page (main access point)
----
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Cube - MLL Lab</title>
-    <link rel="icon" type="image/png" href="/assets/images/mindcube.png">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; overflow: hidden; }
-        #mind-cube-frame { width: 100%; height: 100vh; border: none; display: block; }
-    </style>
-</head>
-<body>
-    <iframe 
-        id="mind-cube-frame"
-        src="https://mind-cube.github.io/"
-        title="Mind Cube Project">
-    </iframe>
-</body>
-</html> 
+// Mind Cube project page - redirect to external site
+return Astro.redirect('https://mind-cube.github.io/');
+--- 
