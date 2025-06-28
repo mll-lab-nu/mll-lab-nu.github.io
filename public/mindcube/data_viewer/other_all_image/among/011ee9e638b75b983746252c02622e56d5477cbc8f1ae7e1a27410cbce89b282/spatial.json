@@ -1,0 +1,41 @@
+{"type":"around_toward",
+"desc":{
+    "desc1": "<image1>in the front view image of the central chair, a black mesh office chair, there are also a blue trash can and two other chairs in the background",
+    "desc2": "<image2>the left view of the central chair",
+    "desc3": "<image3>the right view of the scene, there are also two more desks visible in the scene",
+    "desc4": "<image4>the behind view of the scene.",
+    "desc11": "<image1><image2>give two images of a scene captured from different viewpoints",
+    "desc12": "<image1><image3>give two images of a scene captured from different viewpoints",
+    "desc13": "<image4><image2>give two images of a scene captured from different viewpoints",
+    "desc14": "<image4><image3>give two images of a scene captured from different viewpoints"
+
+},
+
+"Setting3":
+{
+    "desc":[11,12,13, 14],
+   "Q1":"please determine which direction did you move? A: Left-front B:Right-front",
+   "Q2": "please determine which direction did you move? A: Left-front B:Right-front",
+   "A1":"A: Left-front",
+   "A2":"B: Right-front",
+   "H1":"1",
+   "H2":"1",
+   "Q3":"please determine which direction did you move? A: Left-front B:Right-front",
+   "Q4": "please determine which direction did you move? A: Left-front B:Right-front",
+   "A4":"A: Left-front",
+   "A3":"B: Right-front",
+   "H3":"1",
+   "H4":"1"
+
+
+},
+"other_setting":
+{
+    "desc":[1,2,3],
+   "Q1":"What is behind you in the left view image? A: chair B: floor C: blue trash can and desk D: black mesh office chair.",
+   "A1":"C",
+   "H1":"3"
+
+}
+}
+
