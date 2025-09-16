@@ -4,19 +4,21 @@ interface Props {
     subtitle?: string;
     centered?: boolean;
     className?: string;
+    titleClassName?: string;
 }
 
 const { 
     title, 
     subtitle, 
     centered = false,
-    className = ''
+    className = '',
+    titleClassName = 'text-secondary-900'
 } = Astro.props;
 
 const alignment = centered ? 'text-center' : '';
 ---
 
 <div class={`mb-8 ${alignment} ${className}`}>
-    <h2 class="text-3xl font-heading font-bold text-secondary-900 mb-3">{title}</h2>
+    <h2 class={`text-3xl font-heading font-bold mb-3 ${titleClassName}`}>{title}</h2>
     {subtitle && <p class="text-xl text-secondary-600 max-w-3xl mx-auto">{subtitle}</p>}
 </div> 
