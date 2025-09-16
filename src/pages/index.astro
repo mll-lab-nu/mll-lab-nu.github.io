@@ -37,7 +37,7 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 								</Button>
 								
 								<a href="https://ragen-ai.github.io" class="z-10 inline-flex items-center text-primary-600 hover:underline font-medium self-center">
-									Announcing&nbsp;<b>RAGEN</b>:&nbsp;Training RL Agents - Github ⭐️ 1.7k
+									Announcing&nbsp;<b>RAGEN</b>:&nbsp;Training RL Agents - Github ⭐️ 2.3k
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1">
 										<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
 									</svg>
@@ -64,14 +64,84 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 		<section id="news" class="py-10 bg-secondary-50 mt-6">
 			<div class="container mx-auto px-4">
 				<SectionHeader 
-					title="📰 Latest News" 
+					title="Latest News" 
 					centered={true}
-					className="mb-6"
+					className="mb-6 text-primary-600"
 				/>
 				
-				<div class="max-w-4xl mx-auto">
+				<div class="w-full">
 					<div class="bg-white shadow-medium rounded-xl border border-secondary-100 p-8">
 						<News client:load />
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Selected Publications Section -->
+		<section id="publications" class="py-10 bg-background-light mt-6">
+			<div class="container mx-auto px-4">
+				<SectionHeader 
+					title="Selected Publications" 
+					centered={true}
+					className="mb-6 text-primary-600"
+				/>
+				
+				<div class="w-full">
+					<div class="bg-white shadow-medium rounded-xl border border-secondary-100 p-8">
+						<div class="space-y-6">
+							<div class="border-l-4 border-primary-600 pl-4">
+								<h3 class="text-lg font-semibold text-secondary-900 mb-2">
+									<a href="https://github.com/RAGEN-AI/RAGEN" class="text-primary-600 hover:text-primary-700 hover:underline">
+										RAGEN (RL-Agent): Training Agents by Reinforcing Reasoning
+									</a>
+								</h3>
+								<p class="text-secondary-600 text-sm mb-2">
+									Zihan Wang*, Kangrui Wang*, Qineng Wang*, Pingyue Zhang*, Linjie Li*, Zhengyuan Yang, Kefan Yu, Minh Nhat Nguyen, Monica Lam, Yiping Lu, Kyunghyun Cho, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li
+								</p>
+								<div class="flex flex-wrap gap-2">
+									<span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Open-source Project</span>
+									<span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">LLM Agent + Multi-turn RL</span>
+								</div>
+							</div>
+							
+							<div class="border-l-4 border-primary-600 pl-4">
+								<h3 class="text-lg font-semibold text-secondary-900 mb-2">
+									<a href="https://github.com/RAGEN-AI/VAGEN" class="text-primary-600 hover:text-primary-700 hover:underline">
+										VAGEN: Training VLM Agents with Multi-Turn Reinforcement Learning
+									</a>
+								</h3>
+								<p class="text-secondary-600 text-sm mb-2">
+									Kangrui Wang*, Pingyue Zhang*, Zihan Wang*, Qineng Wang*, Linjie Li*, Zhengyuan Yang, Chi Wan, Yiping Lu, Manling Li
+								</p>
+								<div class="flex flex-wrap gap-2">
+									<span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Open-source Project</span>
+									<span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">VLM Agent + Multi-turn RL</span>
+								</div>
+							</div>
+							
+							<div class="border-l-4 border-primary-600 pl-4">
+								<h3 class="text-lg font-semibold text-secondary-900 mb-2">
+									<a href="https://github.com/ZihanWang314/coe" class="text-primary-600 hover:text-primary-700 hover:underline">
+										Chain-of-Experts: Unlocking the Communication Power of MoEs
+									</a>
+								</h3>
+								<p class="text-secondary-600 text-sm mb-2">
+									Zihan Wang, Rui Pan, Lu Yin, Manling Li, Shiwei Liu
+								</p>
+								<div class="flex flex-wrap gap-2">
+									<span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Open-source Project</span>
+								</div>
+							</div>
+							
+							<div class="text-center pt-4">
+								<a href="/publications" class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium">
+									View All Publications
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+										<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+									</svg>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
