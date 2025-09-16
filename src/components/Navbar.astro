@@ -1,6 +1,7 @@
 ---
 import { Astronav, MenuIcon, MenuItems } from 'astro-navbar';
 import Button from '../components/ui/Button.astro';
+import logo from '../assets/logo-mll-lab-1.png';
 
 const menuitems = [
 	{
@@ -36,6 +37,7 @@ const currentPath = Astro.url.pathname;
 					href="/"
 					class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors"
 				>
+					<img src={logo.src} alt="MLL Lab" class="h-8 w-auto mr-2" />
 					<span class="font-bold text-primary-600">MLL</span>&nbsp;-&nbsp;<span class="font-bold text-primary-600">M</span>achine&nbsp;<span class="font-bold text-primary-600">L</span>earning&nbsp;&&nbsp;<span class="font-bold text-primary-600">L</span>anguage 
 				</a>
 			</div>
@@ -85,6 +87,7 @@ const currentPath = Astro.url.pathname;
 				href="/"
 				class="flex py-1 text-lg font-heading font-semibold hover:text-primary-600 transition-colors min-w-[40px]"
 			>
+				<img src={logo.src} alt="MLL Lab" class="h-7 w-auto mr-2" />
 				<span class="font-bold text-primary-600">MLL</span>
 			</a>
 			
