@@ -1,887 +1,102 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/ui/Container.astro';
-import SectionHeader from '../components/ui/SectionHeader.astro';
+import selectedPublications from '../data/selected_publications.json';
 
-const pubs = [
-	{
-		year: "2025",
-		publications: [
-			{
-				title: "RAGEN (RL-Agent): Training Agents by Reinforcing Reasoning",
-				link: "https://ragen-ai.github.io",
-				authors: "Zihan Wang*, Kangrui Wang*, Qineng Wang*, Pingyue Zhang*, Linjie Li*, Zhengyuan Yang, Kefan Yu, Minh Nhat Nguyen, Monica Lam, Yiping Lu, Kyunghyun Cho, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
-				note: [
-					"Best Poster Award – MMLS 2025",
-					"2.3k+ GitHub Stars & Media Coverage",
-					"LLM Agent + Multi-turn RL"
-				],
-				conference_title: "Midwest Machine Learning Symposium (MMLS) 2025",
-				conference_misc: "",
-				resources: {
-					website: "https://ragen-ai.github.io",
-					pdf: "https://arxiv.org/abs/2504.20073",
-					code: "https://github.com/ZihanWang314/ragen",
-					logs: "https://wandb.ai/zihanwang-ai-northwestern-university/ragen_latest/reports/RAGEN-Full-Experiments--VmlldzoxMjQzOTM1OA?accessToken=yzg8k9f70uleqb7ukisej6qj19kas8q2l9bvyig0hp02gwu2yv3ra4x15iyegqmw",
-					"tl;dr": "https://x.com/wzihanw/status/1884092805598826609"
-				}
-			},
-			{
-				title: "VAGEN: Training VLM Agents with Multi-Turn Reinforcement Learning",
-				link: "https://github.com/RAGEN-AI/VAGEN",
-				authors: "Kangrui Wang*, Pingyue Zhang*, Zihan Wang*, Qineng Wang*, Linjie Li*, Zhengyuan Yang, Chi Wan, Yiping Lu, Manling Li",
-				note: ["VLM Agent + Multi-turn RL"],
-				conference_title: "NeurIPS 2025",
-				conference_misc: "",
-				resources: {
-					blog: "https://mll-lab.notion.site/vagen",
-					code: "https://github.com/RAGEN-AI/VAGEN",
-					"tl;dr": "https://x.com/ManlingLi_/status/1904561315114278969"
-				}
-			},
-			{
-				title: "Chain-of-Experts: Unlocking the Communication Power of MoEs",
-				link: "https://github.com/ZihanWang314/coe",
-				authors: "Zihan Wang, Rui Pan, Lu Yin, Manling Li, Shiwei Liu",
-				note: ["Mixture-of-Experts Communication"],
-				conference_title: "arXiv Preprint 2025",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2506.18945",
-					blog: "https://sandy-server-87f.notion.site/Chain-of-Experts-Unlocking-the-Communication-Power-of-MoEs-1ab9bb750b7980048d43e6aab3537cea",
-					code: "https://github.com/ZihanWang314/coe",
-					"tl;dr": "https://x.com/ManlingLi_/status/1896642207903629790"
-				}
-			},
-			{
-				title: "Re-thinking Temporal Search for Long-Form Video Understanding",
-				link: "https://longvideohaystack.github.io",
-				authors: "Jinhui Ye*, Zihan Wang*, Haosen Sun, Keshigeyan Chandrasegaran, Zane Durante, Cristobal Eyzaguirre, Yonatan Bisk, Juan Carlos Niebles, Ehsan Adeli, Li Fei-Fei, Jiajun Wu, Manling Li",
-				conference_title: "CVPR 2025",
-				conference_misc: ", Tennessee, USA, June, 2025.",
-				resources: {
-					website: "https://longvideohaystack.github.io",
-					data: "https://huggingface.co/LVHaystack",
-					code: "https://github.com/LongVideoHaystack/TStar"
-				}
-			},
-			{
-				title: "LayoutVLM: Differentiable Optimization of 3D Layout via Vision-Language Models",
-				link: "https://ai.stanford.edu/~sunfanyun/layoutvlm/",
-				authors: "Fan-Yun Sun, Weiyu Liu, Siyi Gu, Dylan Lim, Goutam Bhat, Federico Tombari, Manling Li, Nick Haber, Jiajun Wu",
-				conference_title: "CVPR 2025",
-				conference_misc: "",
-				resources: {
-					website: "https://ai.stanford.edu/~sunfanyun/layoutvlm/",
-					pdf: "https://arxiv.org/abs/2412.02193",
-					code: "https://github.com/sunfanyunn/LayoutVLM"
-				}
-			},
-			{
-				title: "Foundation Models Meet Embodied Agents",
-				link: "https://foundation-models-meet-embodied-agents.github.io",
-				authors: "Manling Li, Yunzhu Li, Jiayuan Mao, Wenlong Huang",
-				note: ["Tutorial"],
-				conference_title: "AAAI 2025, NAACL 2025",
-				conference_misc: "",
-				resources: {
-					website: "https://foundation-models-meet-embodied-agents.github.io"
-				}
-			},
-			{
-				title: "Chain-of-Action: Faithful and Multimodal Question Answering through Large Language Models",
-				link: "https://arxiv.org/abs/2403.17359",
-				authors: "Zhenyu Pan, Haozheng Luo, Manling Li, Han Liu",
-				conference_title: "ICLR 2025",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2403.17359"
-				}
-			},
-			{
-				title: "Why Is Spatial Reasoning Hard for VLMs? An Attention Mechanism Perspective on Focus Areas",
-				link: "https://arxiv.org/abs/2503.01773",
-				authors: "Shiqi Chen, Tongyao Zhu, Ruochen Zhou, Jinghan Zhang, Siyang Gao, Juan Carlos Niebles, Mor Geva, Junxian He, Jiajun Wu, Manling Li",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2503.01773",
-					code: "https://github.com/shiqichen17/AdaptVis",
-					data: "https://github.com/shiqichen17/AdaptVis"
-				}
-			},
-			{
-				title: "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
-				link: "https://embodiedbench.github.io/",
-				authors: "Rui Yang, Hanyang Chen, Junyu Zhang, Mark Zhao, Cheng Qian, Kangrui Wang, Qineng Wang, Teja Venkat Koripella, Marziyeh Movahedi, Manling Li, Heng Ji, Huan Zhang, Tong Zhang",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					website: "https://embodiedbench.github.io/",
-					pdf: "https://arxiv.org/abs/2502.09560",
-					code: "https://embodiedbench.github.io/"
-				}
-			},
-			{
-				title: "SyncMind: Measuring Agent Out-of-Sync Recovery in Collaborative Software Engineering",
-				link: "https://xhguo7.github.io/SyncMind",
-				authors: "Xuehang Guo, Xingyao Wang, Yangyi Chen, Sha Li, Chi Han, Manling Li, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					website: "https://xhguo7.github.io/SyncMind",
-					pdf: "https://arxiv.org/abs/2502.06994",
-					code: "https://github.com/xhguo7/SyncMind",
-					data: "https://huggingface.co/datasets/xuehang/SyncBench"
-				}
-			}
-		]
-	},
-	{
-		year: "2024",
-		publications: [
-			{
-				title: "Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making",
-				link: "https://embodied-agent-interface.github.io/",
-				authors: "Manling Li*, Shiyu Zhao*, Qineng Wang*, Kangrui Wang*, Yu Zhou*, Sanjana Srivastava, Cem Gokmen, Tony Lee, Li Erran Li, Ruohan Zhang, Weiyu Liu, Percy Liang, Li Fei-Fei, Jiayuan Mao, Jiajun Wu",
-				note: ["NeurIPS 2024 DB Track (Oral Presentation)", "Best Paper Award at SoCalNLP 2024"],
-				conference_title: "Advances in Neural Information Processing Systems, 2024",
-				conference_misc: ", Vancouver, Canada, December, 2024.",
-				resources: {
-					website: "https://embodied-agent-interface.github.io/",
-					pdf: "https://arxiv.org/abs/2410.07166",
-					code: "https://github.com/embodied-agent-eval/embodied-agent-eval",
-					data: "https://huggingface.co/datasets/Inevitablevalor/EmbodiedAgentInterface",
-					docker: "https://hub.docker.com/r/jameskrw/eai-eval",
-					pypi: "https://pypi.org/project/eai-eval/",
-					docs: "https://embodied-agent-eval.readthedocs.io/en/latest/#"
-				}
-			},
-			{
-				title: "HourVideo: 1-Hour Video-Language Understanding",
-				link: "https://hourvideo.stanford.edu",
-				authors: "Keshigeyan Chandrasegaran, Agrim Gupta, Taran Kota, Lea M. Hadzic, Jimming He, Cristobal Eyzaguirre, Zane Durante, Manling Li, Jiajun Wu, Li Fei-Fei",
-				conference_title: "NeurIPS 2024 Benchmark Track",
-				conference_misc: "",
-				resources: {
-					website: "https://hourvideo.stanford.edu",
-					pdf: "https://arxiv.org/abs/2411.04998",
-					data: "https://huggingface.co/datasets/HourVideo/HourVideo",
-					code: "https://github.com/keshik6/HourVideo"
-				}
-			},
-			{
-				title: "IKEA Manuals at Work: 4D Grounding of Assembly Instructions on Internet Videos",
-				link: "https://yunongliu1.github.io/ikea-video-manual/",
-				authors: "Yunong Liu, Weiyu Liu, Shubh Khanna, Cristobal Eyzaguirre, Manling Li, Juan Carlos Niebles, Vineeth Ravi, Saumitra Mishra, Jiajun Wu",
-				conference_title: "NeurIPS 2024 Benchmark Track",
-				conference_misc: "",
-				resources: {
-					website: "https://yunongliu1.github.io/ikea-video-manual/",
-					pdf: "https://arxiv.org/pdf/2411.11409",
-					data: "https://github.com/yunongLiu1/IKEA-Manuals-at-Work",
-					code: "https://github.com/yunongLiu1/IKEA-Manuals-at-Work"
-				}
-			},
-			{
-				title: "Visually Descriptive Language Modeling for Vector Graphics Reasoning",
-				link: "https://arxiv.org/abs/2404.06479",
-				authors: "Zhenhailong Wang, Joy Hsu, Xingyao Wang, Kuan-Hao Huang, Manling Li, Jiajun Wu, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2404.06479",
-					website: "https://mikewangwzhl.github.io/VDLM",
-					code: "https://github.com/MikeWangWZHL/VDLM"
-				}
-			},
-			{
-				title: "LM-Steer: Word Embeddings Are Steers for Language Models",
-				link: "https://lm-steer.github.io",
-				authors: "Chi Han, Jialiang Xu, Manling Li, Yi Fung, Chenkai Sun, Nan Jiang, Tarek Abdelzaher, Heng Ji",
-				note: ["Outstanding Paper Award at ACL 2024"],
-				conference_title: "ACL 2024",
-				conference_misc: "",
-				resources: {
-					website: "https://lm-steer.github.io",
-					pdf: "https://arxiv.org/abs/2305.12798",
-					code: "https://github.com/Glaciohound/LM-Steer",
-					demo: "https://huggingface.co/spaces/Glaciohound/LM-Steer",
-					slides: "https://lm-steer.github.io/assets/slides.pdf",
-					poster: "https://lm-steer.github.io/assets/poster.pdf"
-				}
-			},
-			{
-				title: "Why Does New Knowledge Create Messy Ripple Effects in LLMs?",
-				link: "https://arxiv.org/abs/2407.12828",
-				authors: "Jiaxin Qin, Zixuan Zhang, Chi Han, Pengfei Yu, Manling Li, Heng Ji",
-				conference_title: "EMNLP 2024",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2407.12828"
-				}
-			},
-			{
-				title: "Deep Concept Injection for Zero-shot Multimodal Reasoning",
-				link: "https://arxiv.org/abs/2403.17359",
-				authors: "Xudong Lin, Manling Li, Richard Zemel, Heng Ji, Shih-Fu Chang",
-				conference_title: "EMNLP 2024",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2403.17359"
-				}
-			},
-			{
-				title: "Knowledge Overshadowing Causes Amalgamated Hallucination in Large Language Models",
-				link: "https://arxiv.org/abs/2407.08039",
-				authors: "Yuji Zhang, Sha Li, Jiateng Liu, Pengfei Yu, Yi Fung, Jing Li, Manling Li, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2407.08039"
-				}
-			},
-			{
-				title: "MentalArena: Self-play Training of Language Models for Diagnosis and Treatment of Mental Health Disorders",
-				link: "https://arxiv.org/pdf/2410.06845",
-				authors: "Cheng Li, May Fung, Qingyun Wang, Chi Han, Manling Li, Jindong Wang, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/pdf/2410.06845",
-					code: "https://github.com/blender-nlp/MentalArena"
-				}
-			},
-			{
-				title: "Can LLMs Produce Faithful Explanations For Fact-checking? Towards Faithful Explainable Fact-Checking via Multi-Agent Debate",
-				link: "https://arxiv.org/abs/2402.07401",
-				authors: "Kyungha Kim*, Sangyun Lee*, Kung-Hsiang Huang*, Hou Pong Chan, Manling Li, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2402.07401",
-					code: "https://github.com/blender-nlp/faithful-fact-checking"
-				}
-			},
-			{
-				title: "InfoPattern: Unveiling Information Propagation Patterns in Social Media",
-				link: "https://arxiv.org/abs/2311.15642",
-				authors: "Chi Han*, Jialiang Xu*, Manling Li*, Hanning Zhang*, Tarek Abdelzaher, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2311.15642",
-					code: "https://github.com/blender-nlp/InfoPattern"
-				}
-			},
-			{
-				title: "SmartBook: AI-Assisted Situation Report Generation",
-				link: "https://arxiv.org/abs/2303.14337",
-				authors: "Revanth Gangi Reddy, Yi Fung, Qi Zeng, Manling Li, Zihan Wang, Paul Sullivan, Heng Ji",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2303.14337",
-					code: "https://github.com/blender-nlp/SmartBook"
-				}
-			},
-			{
-				title: "Controlling Object Existence Hallucinations in Large Vision Language Models",
-				link: "https://arxiv.org/abs/2310.01779",
-				authors: "Bohan Zhai, Shijia Yang, Chenfeng Xu, Sheng Shen, Kurt Keutzer, Chunyuan Li, Manling Li",
-				conference_title: "arXiv",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2310.01779",
-					code: "https://github.com/UCSC-VLAA/Hallucination-VLM"
-				}
-			}
-		]
-	},
-	{
-		year: "2023",
-		publications: [
-			{
-				title: "Event-centric Multimodal Knowledge Acquisition",
-				link: "uploads/ManlingLiThesis.pdf",
-				authors: "Manling Li",
-				note: ["Thesis"],
-				conference_title: "Thesis Committee: Heng Ji, Jiawei Han, Chengxiang Zhai, Shih-Fu Chang, Kyunghyun Cho",
-				conference_misc: ""
-			},
-			{
-				title: "ViStruct: Visual Structural Knowledge Extraction via Curriculum Guided Code-Vision Representation",
-				link: "https://arxiv.org/abs/2311.02790",
-				authors: "Yangyi Chen, Xingyao Wang, Manling Li, Derek Hoiem, Heng Ji",
-				conference_title: "EMNLP 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2311.02790",
-					code: "https://github.com/yangyi0818/ViStruct"
-				}
-			},
-			{
-				title: "Defining a New NLP Playground",
-				link: "https://arxiv.org/abs/2310.14261",
-				authors: "Sha Li, Chi Han, Pengfei Yu, Carl Edwards, Manling Li, Xingyao Wang, Yi Fung, Charles Yu, Joel R. Tetreault, Eduard H Hovy, Heng Ji",
-				conference_title: "EMNLP 2023 Findings",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2310.14261"
-				}
-			},
-			{
-				title: "Knowledge-Driven Vision-Language Encoding",
-				link: "https://blender.cs.illinois.edu/tutorial/KnowledgeVLP/",
-				authors: "Manling Li, Xudong Lin, Jie Lei, Mohit Bansal, Carl Vondrick, Shih-Fu Chang, Heng Ji",
-				note: ["Tutorial"],
-				conference_title: "CVPR 2023",
-				conference_misc: "",
-				resources: {
-					website: "https://blender.cs.illinois.edu/tutorial/KnowledgeVLP/"
-				}
-			},
-			{
-				title: "Towards Fast Adaptation of Pretrained Contrastive Models for Multi-channel Video-Language Retrieval",
-				link: "https://openreview.net/forum?id=C9hEF7lYOSP",
-				authors: "Xudong Lin, Simran Tiwari, Shiyuan Huang, Manling Li, Mike Zheng Shou, Heng Ji, Shih-Fu Chang",
-				conference_title: "CVPR 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://openreview.net/forum?id=C9hEF7lYOSP"
-				}
-			},
-			{
-				title: "Open Visual Knowledge Extraction via Relation-Oriented Multimodality Model Prompting",
-				link: "https://blender.cs.illinois.edu/tutorial/KnowledgeVLP/",
-				authors: "Hejie Cui, Xinyu Fang, Zihan Zhang, Ran Xu, Xuan Kan, Xin Liu, Manling Li, Yangqiu Song, Carl Yang",
-				conference_title: "NeurIPS 2023",
-				conference_misc: "",
-				resources: {
-					website: "https://blender.cs.illinois.edu/tutorial/KnowledgeVLP/"
-				}
-			},
-			{
-				title: "Non-Sequential Graph Script Induction via Multimedia Grounding",
-				link: "https://aclanthology.org/2023.acl-long.657/",
-				authors: "Yu Zhou†, Sha Li, Manling Li, Xudong Lin, Shih-Fu Chang, Mohit Bansal and Heng Ji",
-				conference_title: "ACL 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2023.acl-long.657.pdf",
-					code: "https://github.com/blender-nlp/GraphScript"
-				}
-			},
-			{
-				title: "A Language First Approach to Procedure Planning",
-				link: "https://arxiv.org/abs/2305.13649",
-				authors: "Jiateng Liu†, Sha Li, Zhenhailong Wang, Manling Li, Heng Ji",
-				conference_title: "ACL 2023 Findings",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2305.13649",
-					code: "https://github.com/blender-nlp/procedure-planning"
-				}
-			},
-			{
-				title: "Open-Domain Hierarchical Event Schema Induction by Incremental Prompting and Verification",
-				link: "https://aclanthology.org/2023.acl-long.876/",
-				authors: "Sha Li, Ruining Zhao†, Manling Li, Heng Ji, Chris Callison-Burch and Jiawei Han",
-				conference_title: "ACL 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2023.acl-long.876.pdf",
-					code: "https://github.com/blender-nlp/schema-induction"
-				}
-			},
-			{
-				title: "Multimedia Generative Script Learning for Task Planning",
-				link: "https://arxiv.org/abs/2305.14302",
-				authors: "Qingyun Wang, Manling Li, Hou Pong Chan, Lifu Huang, Julia Hockenmaier, Girish Chowdhary and Heng Ji",
-				conference_title: "ACL 2023 Findings",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2305.14302",
-					code: "https://github.com/blender-nlp/multimedia-script"
-				}
-			},
-			{
-				title: "Learning to Decompose Visual Features with Latent Textual Prompts",
-				link: "https://arxiv.org/abs/2210.04287",
-				authors: "Feng Wang†, Manling Li, Xudong Lin, Hairong Lv, Alexander Schwing, Heng Ji",
-				conference_title: "ICLR 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2210.04287",
-					code: "https://github.com/blender-nlp/decompose-visual-features"
-				}
-			},
-			{
-				title: "Knowledge-Driven Vision-Language Pretraining",
-				link: "https://blender.cs.illinois.edu/tutorial/knowledgeVLP/",
-				authors: "Manling Li, Xudong Lin, Jie Lei, Mohit Bansal, Shih-Fu Chang, Heng Ji",
-				note: ["Tutorial"],
-				conference_title: "AAAI 2023",
-				conference_misc: "",
-				resources: {
-					website: "https://blender.cs.illinois.edu/tutorial/knowledgeVLP/",
-					slides: "https://blender.cs.illinois.edu/tutorial/knowledgeVLP/slides.pdf"
-				}
-			},
-			{
-				title: "Video Event Extraction via Tracking Visual States of Arguments",
-				link: "https://arxiv.org/abs/2211.01781",
-				authors: "Guang Yang†, Manling Li, Jiajie Zhang, Xudong Lin, Shih-Fu Chang, Heng Ji",
-				conference_title: "AAAI 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2211.01781",
-					code: "https://github.com/blender-nlp/video-event"
-				}
-			},
-			{
-				title: "ADEPT: A DEbiasing PrompT Framework",
-				link: "https://arxiv.org/abs/2211.05414",
-				authors: "Ke Yang†, Charles Yu, Yi Fung, Manling Li, Heng Ji",
-				conference_title: "AAAI 2023",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2211.05414",
-					code: "https://github.com/blender-nlp/ADEPT"
-				}
-			},
-			{
-				title: "Timeline Summarization based on Event Graph Compression via Time-Aware Optimal Transport",
-				link: "https://blender.cs.illinois.edu/paper/timeline2021.pdf",
-				authors: "Manling Li, Tengfei Ma, Mo Yu, Lingfei Wu, Tian Gao, Heng Ji and Kathleen McKeown",
-				conference_title: "EMNLP 2021",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/timeline2021.pdf",
-					code: "https://github.com/blender-nlp/timeline"
-				}
-			},
-			{
-				title: "Joint Multimedia Event Extraction from Video and Article",
-				link: "https://blender.cs.illinois.edu/paper/videoevent2021.pdf",
-				authors: "Brian Chen, Xudong Lin, Christopher Thomas, Manling Li, Shoya Yoshida, Lovish Chum, Heng Ji and Shih-Fu Chang",
-				conference_title: "EMNLP 2021 Findings",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/videoevent2021.pdf",
-					code: "https://github.com/blender-nlp/mm-event-graph"
-				}
-			},
-			{
-				title: "RESIN: A Dockerized Schema-Guided Cross-document Cross-lingual Cross-media Information Extraction and Event Tracking System",
-				link: "https://blender.cs.illinois.edu/paper/resin2020.pdf",
-				authors: "Manling Li, Ying Lin, Joseph Hoover, Spencer Whitehead, Clare Voss, Jiawei Han and Heng Ji",
-				conference_title: "NAACL 2021 Demo",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/resin2020.pdf",
-					code: "https://github.com/RESIN-KAIROS/RESIN-pipeline",
-					demo: "http://blender.cs.illinois.edu/software/resin/"
-				}
-			},
-			{
-				title: "Connecting the Dots: Event Graph Schema Induction with Path Language Modeling",
-				link: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-				authors: "Manling Li, Qi Zeng, Ying Lin, Kyunghyun Cho, Heng Ji, Jonathan May, Nathanael Chambers, Clare Voss",
-				conference_title: "EMNLP 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-					code: "https://github.com/limanling/event-schema-induction"
-				}
-			},
-			{
-				title: "Joint Extraction of Events and Entities within a Document Context",
-				link: "https://blender.cs.illinois.edu/paper/jointevententity2016.pdf",
-				authors: "Bishan Yang, Tom Mitchell",
-				conference_title: "NAACL 2016",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/jointevententity2016.pdf",
-					code: "https://github.com/bishanyang/EventEntityExtractor"
-				}
-			},
-			{
-				title: "Improving Event Detection via Open-domain Trigger Knowledge",
-				link: "https://blender.cs.illinois.edu/paper/triggerknowledge2019.pdf",
-				authors: "Xiaozhi Wang, Xu Han, Zhiyuan Liu, Maosong Sun, Peng Li",
-				conference_title: "ACL 2019",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/triggerknowledge2019.pdf",
-					code: "https://github.com/thunlp/ODEE"
-				}
-			}
-		]
-	},
-	{
-		year: "2022",
-		publications: [
-			{
-				title: "Language Models with Image Descriptors are Strong Few-Shot Video-Language Learners",
-				link: "https://arxiv.org/abs/2205.10747",
-				authors: "Zhenhailong Wang†*, Manling Li*, Ruochen Xu, Luowei Zhou, Jie Lei, Xudong Lin, Shuohang Wang, Ziyi Yang, Chenguang Zhu, Derek Hoiem, Shih-Fu Chang, Mohit Bansal, Heng Ji",
-				note: ["equal contribution"],
-				conference_title: "NeurIPS 2022",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2205.10747",
-					code: "https://github.com/blender-nlp/FewVLM"
-				}
-			},
-			{
-				title: "CLIP-Event: Connecting Vision and Text with Event Structures",
-				link: "https://arxiv.org/abs/2201.05078",
-				authors: "Manling Li, Ruochen Xu, Shuohang Wang, Xudong Lin, Chenguang Zhu, Xuedong Huang, Heng Ji, Shih-Fu Chang",
-				note: ["Oral, Top 4.1%"],
-				conference_title: "CVPR 2022",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2201.05078",
-					code: "https://github.com/blender-nlp/CLIP-Event"
-				}
-			},
-			{
-				title: "COVID-19 Claim Radar: A Structured Claim Extraction and Tracking System",
-				link: "https://github.com/blender-nlp/covid-claim-radar",
-				authors: "Manling Li, Revanth Gangi Reddy, Ziqi Wang, Yi-Shyuan Chiang, Tuan M. Lai, Pengfei Yu, Zixuan Zhang, Heng Ji",
-				conference_title: "ACL 2022 Demo",
-				conference_misc: "",
-				resources: {
-					code: "https://github.com/blender-nlp/covid-claim-radar",
-					demo: "https://blender.cs.illinois.edu/demo/covid-claim-radar/"
-				}
-			},
-			{
-				title: "Event Schema Induction with Double Graph Autoencoders",
-				link: "https://aclanthology.org/2022.naacl-main.147/",
-				authors: "Xiaomeng Jin†, Manling Li and Heng Ji",
-				conference_title: "NAACL 2022",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2022.naacl-main.147.pdf",
-					code: "https://github.com/blender-nlp/schema-induction"
-				}
-			},
-			{
-				title: "New Frontiers of Information Extraction",
-				link: "https://aclanthology.org/2022.naacl-tutorials.3/",
-				authors: "Muhao Chen, Lifu Huang, Manling Li, Ben Zhou, Heng Ji",
-				note: ["Tutorial"],
-				conference_title: "NAACL 2022",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2022.naacl-tutorials.3.pdf",
-					slides: "https://blender.cs.illinois.edu/tutorial/ie2022/slides.pdf"
-				}
-			},
-			{
-				title: "MuMuQA: Multimedia Multi-Hop News Question Answering via Cross-Media Knowledge Extraction and Grounding",
-				link: "https://arxiv.org/abs/2112.10728",
-				authors: "Revanth Gangi Reddy†, Xilin Rui†, Manling Li, Xudong Lin, Haoyang Wen, Jaemin Cho, Lifu Huang, Mohit Bansal, Avi Sil, Shih-Fu Chang, Alexander Schwing, Heng Ji",
-				conference_title: "AAAI 2022",
-				conference_misc: "",
-				resources: {
-					pdf: "https://arxiv.org/abs/2112.10728",
-					code: "https://github.com/blender-nlp/MuMuQA"
-				}
-			}
-		]
-	},
-	{
-		year: "2021",
-		publications: [
-			{
-				title: "The Future is not One-dimensional: Complex Event Schema Induction by Graph Modeling for Event Prediction",
-				link: "https://blender.cs.illinois.edu/paper/schema2021a.pdf",
-				authors: "Manling Li, Sha Li, Zhenhailong Wang, Lifu Huang, Kyunghyun Cho, Heng Ji, Jiawei Han and Clare Voss",
-				conference_title: "EMNLP 2021",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/schema2021a.pdf",
-					code: "https://github.com/blender-nlp/complex-graph-schema"
-				}
-			},
-			{
-				title: "Event-centric Natural Language Processing",
-				link: "https://blender.cs.illinois.edu/paper/eventtutorial2021.pdf",
-				authors: "Muhao Chen, Hongming Zhang, Qiang Ning, Manling Li, Heng Ji, Kathleen McKeown and Dan Roth",
-				note: ["Tutorial"],
-				conference_title: "ACL 2021",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventtutorial2021.pdf",
-					slides: "https://blender.cs.illinois.edu/tutorial/event2021/slides.pdf"
-				}
-			},
-			{
-				title: "COVID-19 Literature Knowledge Graph Construction and Drug Repurposing Report Generation",
-				link: "https://blender.cs.illinois.edu/paper/COVIDKG.pdf",
-				authors: "Qingyun Wang, Manling Li, Xuan Wang, Nikolaus Parulian, Guangxing Han, Jiawei Ma, Jingxuan Tu, Ying Lin, Haoran Zhang, Weili Liu, Aabhas Chauhan, Yingjun Guan, Bangzheng Li, Ruisong Li, Xiangchen Song, Heng Ji, Jiawei Han, Shih-Fu Chang, James Pustejovsky, David Liem, Ahmed Elsayed, Martha Palmer, Jasmine Rah, Clare Voss, Cynthia Schneider, Boyan Onyshkevych",
-				note: ["Best Demo Paper Award at NAACL 2021"],
-				conference_title: "NAACL 2021: System Demonstrations",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/COVIDKG.pdf",
-					code: "https://github.com/blender-nlp/covid-claim",
-					demo: "https://blender.cs.illinois.edu/demo/covid19/"
-				}
-			},
-			{
-				title: "RESIN: A Dockerlized Schema-Guided Cross-document Cross-lingual Cross-media Information Extraction and Event Tracking System",
-				link: "https://blender.cs.illinois.edu/paper/resin-phase1.pdf",
-				authors: "Haoyang Wen, Ying Lin, Tuan M. Lai, Xiaoman Pan, Sha Li, Xudong Lin, Ben Zhou, Manling Li, Haoyu Wang, Hongming Zhang, Xiaodong Yu, Alexander Dong, Zhenhailong Wang, Yi R. Fung, Piyush Mishra, Qing Lyu, Dídac Surís, Brian Chen, Susan W. Brown, Martha Palmer, Chris Callison-Burch, Carl Vondrick, Jiawei Han, Dan Roth, Shih-Fu Chang and Heng Ji",
-				conference_title: "NAACL 2021: System Demonstrations",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/resin-phase1.pdf",
-					code: "https://github.com/RESIN-KAIROS/RESIN-pipeline"
-				}
-			},
-			{
-				title: "Event-centric Natural Language Processing",
-				link: "https://blender.cs.illinois.edu/paper/eventtutorial2021.pdf",
-				authors: "Muhao Chen, Hongming Zhang, Qiang Ning, Manling Li, Heng Ji and Dan Roth",
-				note: ["Tutorial"],
-				conference_title: "AAAI 2021",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventtutorial2021.pdf",
-					slides: "https://blender.cs.illinois.edu/tutorial/event2021/slides.pdf"
-				}
-			},
-			{
-				title: "Connecting the Dots: Event Graph Schema Induction with Path Language Modeling",
-				link: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-				authors: "Manling Li, Qi Zeng, Ying Lin, Kyunghyun Cho, Heng Ji, Jonathan May, Nathanael Chambers, Clare Voss",
-				conference_title: "EMNLP 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-					code: "https://github.com/limanling/event-schema-induction"
-				}
-			},
-			{
-				title: "GAIA: A Fine-grained Multimedia Knowledge Extraction System",
-				link: "https://blender.cs.illinois.edu/paper/gaia2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Qi Zeng, Spencer Whitehead, Di Lu, Heng Ji, Shih-Fu Chang",
-				note: ["Best Demo Paper Award at ACL 2020"],
-				conference_title: "ACL 2020: System Demonstrations",
-				conference_misc: "Best Demo Paper Award",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/gaia2020.pdf",
-					code: "https://github.com/GAIA-AIDA/gaia-knowledge-graph",
-					demo: "http://blender.cs.illinois.edu/software/gaia-ie/"
-				}
-			},
-			{
-				title: "Cross-media Structured Common Space for Multimedia Event Extraction",
-				link: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Ying Lin, Xiaoman Pan, Spencer Whitehead, Brian Chen, Bo Wu, Heng Ji, Shih-Fu Chang, Clare Voss, Daniel Napierski, Marjorie Freedman",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-					code: "https://github.com/limanling/m2e2",
-					demo: "http://blender.cs.illinois.edu/software/m2e2/"
-				}
-			},
-			{
-				title: "A Joint Neural Model for Information Extraction with Global Features",
-				link: "https://blender.cs.illinois.edu/paper/jointie2019.pdf",
-				authors: "Ying Lin, Heng Ji, Fei Huang, Lingfei Wu",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/jointie2019.pdf",
-					code: "https://github.com/ying-lin/one2set"
-				}
-			},
-			{
-				title: "GAIA at SM-KBP 2020 - A Dockerized Multi-media Multi-lingual Knowledge Extraction, Clustering, Temporal Tracking and Hypothesis Generation System",
-				link: "https://dsr.cise.ufl.edu/wp-content/uploads/2021/02/gaia_smkbp_2020.pdf",
-				authors: "Manling Li, Ying Lin, Tuan Manh Lai, Xiaoman Pan, Haoyang Wen, Sha Li, etc",
-				note: ["Rank 1st in the leaderboard"],
-				conference_title: "TAC-KBP: Text Analysis Conference Knowledge Base Population Workshop 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://dsr.cise.ufl.edu/wp-content/uploads/2021/02/gaia_smkbp_2020.pdf"
-				}
-			},
-			{
-				title: "Keep Meeting Summaries on Topic: Abstractive Multi-Modal Meeting Summarization",
-				link: "https://aclanthology.org/2020.acl-main.172/",
-				authors: "Manling Li, Lingyu Zhang, Heng Ji, Richard J. Radke",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2020.acl-main.172.pdf",
-					code: "https://github.com/limanling/meeting-summary",
-					demo: "http://blender.cs.illinois.edu/demo/meeting-summary/"
-				}
-			},
-			{
-				title: "GAIA: A Fine-grained Multimedia Knowledge Extraction System",
-				link: "https://blender.cs.illinois.edu/paper/aidaoverview2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Ying Lin, Xiaoman Pan, Spencer Whitehead, Brian Chen, Bo Wu, Heng Ji, Shih-Fu Chang, Clare Voss, Daniel Napierski, Marjorie Freedman",
-				conference_title: "AAAI 2020: System Demonstrations",
-				conference_misc: "",
-				note: ["Best Demo Award"],
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/aidaoverview2020.pdf",
-					code: "https://github.com/GAIA-AIDA",
-					demo: "http://blender.cs.illinois.edu/demo/gaia/"
-				}
-			},
-			{
-				title: "Cross-media Structured Common Space for Multimedia Event Extraction",
-				link: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Qi Zeng, Spencer Whitehead, Di Lu, Heng Ji, Shih-Fu Chang",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-					code: "https://github.com/limanling/m2e2",
-					demo: "http://blender.cs.illinois.edu/demo/m2e2/"
-				}
-			}
-		]
-	},
-	{
-		year: "2020",
-		publications: [
-			{
-				title: "Connecting the Dots: Event Graph Schema Induction with Path Language Modeling",
-				link: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-				authors: "Manling Li, Qi Zeng, Ying Lin, Kyunghyun Cho, Heng Ji, Jonathan May, Nathanael Chambers, Clare Voss",
-				conference_title: "EMNLP 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventgraphschema2020.pdf",
-					code: "https://github.com/limanling/event-schema-induction"
-				}
-			},
-			{
-				title: "GAIA: A Fine-grained Multimedia Knowledge Extraction System",
-				link: "https://blender.cs.illinois.edu/paper/gaia2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Qi Zeng, Spencer Whitehead, Di Lu, Heng Ji, Shih-Fu Chang",
-				note: ["Best Demo Paper Award at ACL 2020"],
-				conference_title: "ACL 2020: System Demonstrations",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/gaia2020.pdf",
-					code: "https://github.com/GAIA-AIDA",
-					demo: "http://blender.cs.illinois.edu/software/gaia/"
-				}
-			},
-			{
-				title: "Cross-media Structured Common Space for Multimedia Event Extraction",
-				link: "https://blender.cs.illinois.edu/paper/mediaevent2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Ying Lin, Xiaoman Pan, Spencer Whitehead, Brian Chen, Bo Wu, Heng Ji, Shih-Fu Chang, Clare Voss, Daniel Napierski, Marjorie Freedman",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/mediaevent2020.pdf",
-					code: "https://github.com/limanling/m2e2"
-				}
-			},
-			{
-				title: "Cross-lingual Structure Transfer for Zero-resource Event Extraction",
-				link: "https://blender.cs.illinois.edu/paper/crosslingualzero2020.pdf",
-				authors: "Manling Li, Haoyang Wen, Qi Zeng, Ying Lin, Bishan Yang, Nanyun Peng, Heng Ji",
-				conference_title: "EMNLP 2020 Findings",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/crosslingualzero2020.pdf",
-					code: "https://github.com/limanling/Zero-shot-Event-Extraction",
-					demo: "http://blender.cs.illinois.edu/demo/cross-lingual-event/"
-				}
-			},
-			{
-				title: "RESIN: A Dockerized Schema-Guided Cross-document Cross-lingual Cross-media Information Extraction and Event Tracking System",
-				link: "https://blender.cs.illinois.edu/paper/resin2021.pdf",
-				authors: "Manling Li, Sha Li, Zhenhailong Wang, Lifu Huang, Kyunghyun Cho, Heng Ji, Jiawei Han, Clare Voss",
-				conference_title: "NAACL 2021: System Demonstrations",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/resin2021.pdf",
-					code: "https://github.com/RESIN-KAIROS/RESIN-pipeline",
-					demo: "http://blender.cs.illinois.edu/software/resin/"
-				}
-			},
-			{
-				title: "Connecting the Dots: Event Graph Schema Induction with Path Language Modeling",
-				link: "https://blender.cs.illinois.edu/paper/eventschema2020.pdf",
-				authors: "Manling Li, Qi Zeng, Ying Lin, Kyunghyun Cho, Heng Ji, Jonathan May, Nathanael Chambers, Clare Voss",
-				conference_title: "EMNLP 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/eventschema2020.pdf",
-					code: "https://github.com/limanling/event-schema-induction",
-					demo: "http://blender.cs.illinois.edu/demo/event-schema/"
-				}
-			}
-		]
-	},
-	{
-		year: "2019",
-		publications: [
-			{
-				title: "Keep Meeting Summaries on Topic: Abstractive Multi-Modal Meeting Summarization",
-				link: "https://aclanthology.org/2020.acl-main.172/",
-				authors: "Manling Li, Lingyu Zhang, Heng Ji, Richard J. Radke",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://aclanthology.org/2020.acl-main.172.pdf",
-					code: "https://github.com/limanling/meeting-summary",
-					demo: "http://blender.cs.illinois.edu/demo/meeting-summary/"
-				}
-			},
-			{
-				title: "GAIA: A Fine-grained Multimedia Knowledge Extraction System",
-				link: "https://blender.cs.illinois.edu/paper/aidaoverview2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Ying Lin, Xiaoman Pan, Spencer Whitehead, Brian Chen, Bo Wu, Heng Ji, Shih-Fu Chang, Clare Voss, Daniel Napierski, Marjorie Freedman",
-				conference_title: "AAAI 2020: System Demonstrations",
-				conference_misc: "",
-				note: ["Best Demo Award"],
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/aidaoverview2020.pdf",
-					code: "https://github.com/GAIA-AIDA",
-					demo: "http://blender.cs.illinois.edu/demo/gaia/"
-				}
-			},
-			{
-				title: "Cross-media Structured Common Space for Multimedia Event Extraction",
-				link: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-				authors: "Manling Li, Alireza Zareian, Qi Zeng, Spencer Whitehead, Di Lu, Heng Ji, Shih-Fu Chang",
-				conference_title: "ACL 2020",
-				conference_misc: "",
-				resources: {
-					pdf: "https://blender.cs.illinois.edu/paper/multimediaevent2020.pdf",
-					code: "https://github.com/limanling/m2e2",
-					demo: "http://blender.cs.illinois.edu/demo/m2e2/"
-				}
-			},
-			{
-				title: "GAIA at SM-KBP 2019 - A Multi-media Multi-lingual Knowledge Extraction and Hypothesis Generation System",
-				link: "docs/GAIA2019.pdf",
-				authors: "Manling Li, Ying Lin, Ananya Subburathinam, Spencer Whitehead, Xiaoman Pan, Di Lu, Qingyun Wang, Tongtao Zhang, Lifu Huang, Heng Ji, Alireza Zareian, Hassan Akbari, Brian Chen, Bo Wu, Emily Allaway, Shih-Fu Chang, Kathleen McKeown, Yixiang Yao, Jennifer Chen, Eric Berquist, Kexuan Sun, Xujun Peng, Ryan Gabbard Marjorie Freedman, Pedro Szekely, T.K. Satish Kumar, Arka Sadhu, Ram Nevatia, Miguel Rodriguez, Yifan Wang, Yang Bai, Ali Sadeghian, Daisy Zhe Wang",
-				note: ["Rank 1st, with more than 10% higher than the second team"],
-				conference_title: "TAC-KBP: Text Analysis Conference Knowledge Base Population Workshop 2019",
-				conference_misc: "",
-				resources: {
-					pdf: "docs/GAIA2019.pdf"
-				}
-			}
-		]
-	}
-]
+const resourceOrder = [
+  'website',
+  'pdf',
+  'code',
+  'data',
+  'blog',
+  'arxiv',
+  'slides',
+  'poster',
+  'video',
+  'demo',
+  'docs',
+  'project',
+  'huggingface',
+  'models',
+  'logs',
+  'media',
+  'tl;dr',
+  'pypi',
+  'docker',
+  'github',
+  'code_data',
+  'report'
+];
+
+const resourceLabelMap: Record<string, string> = {
+  website: 'Website',
+  pdf: 'PDF',
+  code: 'Code',
+  data: 'Data',
+  blog: 'Blog',
+  arxiv: 'arXiv',
+  slides: 'Slides',
+  poster: 'Poster',
+  video: 'Video',
+  demo: 'Demo',
+  docs: 'Docs',
+  project: 'Project',
+  huggingface: 'HuggingFace',
+  models: 'Models',
+  logs: 'Logs',
+  media: 'Media',
+  'tl;dr': 'TL;DR',
+  pypi: 'PyPI',
+  docker: 'Docker',
+  github: 'GitHub',
+  code_data: 'Code/Data',
+  report: 'Report'
+};
+
+const pickLink = (resources: Record<string, string>) => {
+  for (const key of resourceOrder) {
+    if (resources[key]) {
+      return resources[key];
+    }
+  }
+  const values = Object.values(resources);
+  return values.length > 0 ? values[0] : '#';
+};
+
+const formatResourceLabel = (key: string) => {
+  if (resourceLabelMap[key]) {
+    return resourceLabelMap[key];
+  }
+  return key
+    .replace(/_/g, ' ')
+    .split(' ')
+    .map((segment) =>
+      segment.length <= 3 ? segment.toUpperCase() : segment.charAt(0).toUpperCase() + segment.slice(1)
+    )
+    .join(' ');
+};
+
+const pubs = Object.entries(selectedPublications)
+  .map(([year, items]) => ({
+    year,
+    publications: items.map((item) => {
+      const resources = (item as any).resources ?? {};
+      return {
+        title: (item as any).title ?? '',
+        link: pickLink(resources),
+        authors: (item as any).authors ?? '',
+        note: Array.isArray((item as any).notes)
+          ? (item as any).notes
+          : (item as any).notes
+          ? [(item as any).notes]
+          : [],
+        conference_title: (item as any).conference ?? '',
+        conference_misc: '',
+        resources
+      };
+    })
+  }))
+  .sort((a, b) => Number(b.year) - Number(a.year));
 
 ---
 
@@ -900,8 +115,8 @@ const pubs = [
 									<a
 										href={pub.link}
 										class="text-xl font-heading font-semibold text-primary-600 hover:underline"
-										target="_blank"
-										rel="noopener"
+										target={pub.link && pub.link !== '#' ? '_blank' : undefined}
+										rel={pub.link && pub.link !== '#' ? 'noopener' : undefined}
 									>
 										{pub.title}
 									</a>
@@ -928,105 +143,26 @@ const pubs = [
 										</div>
 									}
 									
-									{pub.resources && 
+									{pub.resources && Object.keys(pub.resources).length > 0 && (
 										<div class="flex flex-wrap gap-2 my-3">
-											{pub.resources.pdf && 
-												<a href={pub.resources.pdf} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													PDF
-												</a>
-											}
-											{pub.resources.code && 
-												<a href={pub.resources.code} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Code
-												</a>
-											}
-											{pub.resources.website && 
-												<a href={pub.resources.website} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Website
-												</a>
-											}
-											{pub.resources.data && 
-												<a href={pub.resources.data} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Data
-												</a>
-											}
-											{pub.resources.blog && 
-												<a href={pub.resources.blog} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Blog
-												</a>
-											}
-											{pub.resources["tl;dr"] && 
-												<a href={pub.resources["tl;dr"]} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													TL;DR
-												</a>
-											}
-											{pub.resources.demo && 
-												<a href={pub.resources.demo} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Demo
-												</a>
-											}
-											{pub.resources.slides && 
-												<a href={pub.resources.slides} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Slides
-												</a>
-											}
-											{pub.resources.poster && 
-												<a href={pub.resources.poster} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Poster
-												</a>
-											}
-											{pub.resources.pypi && 
-												<a href={pub.resources.pypi} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													PyPi
-												</a>
-											}
-											{pub.resources.docker && 
-												<a href={pub.resources.docker} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Docker
-												</a>
-											}
-											{pub.resources.docs && 
-												<a href={pub.resources.docs} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Docs
-												</a>
-											}
-											{pub.resources.logs && 
-												<a href={pub.resources.logs} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Logs
-												</a>
-											}
-											{pub.resources.video && 
-												<a href={pub.resources.video} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Video
-												</a>
-											}
-											{pub.resources.project && 
-												<a href={pub.resources.project} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													Project
-												</a>
-											}
-											{pub.resources.huggingface && 
-												<a href={pub.resources.huggingface} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													HuggingFace
-												</a>
-											}
-											{pub.resources.arxiv && 
-												<a href={pub.resources.arxiv} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													arXiv
-												</a>
-											}
-											{pub.resources.openreview && 
-												<a href={pub.resources.openreview} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													OpenReview
-												</a>
-											}
-											{pub.resources.github && 
-												<a href={pub.resources.github} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
-													GitHub
-												</a>
-											}
+											{Object.entries(pub.resources)
+												.sort((a, b) => {
+													const idxA = resourceOrder.includes(a[0]) ? resourceOrder.indexOf(a[0]) : resourceOrder.length;
+													const idxB = resourceOrder.includes(b[0]) ? resourceOrder.indexOf(b[0]) : resourceOrder.length;
+													return idxA === idxB ? a[0].localeCompare(b[0]) : idxA - idxB;
+												})
+												.map(([key, url]) => (
+													<a
+														href={url}
+														class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md"
+														target="_blank"
+														rel="noopener"
+													>
+														{formatResourceLabel(key)}
+													</a>
+												))}
 										</div>
-									}
+									)}
 								</li>
 							))}
 						</ul>
