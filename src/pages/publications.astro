@@ -9,14 +9,20 @@ const pubs = [
 		publications: [
 			{
 				title: "RAGEN (RL-Agent): Training Agents by Reinforcing Reasoning",
-				link: "http://github.com/ZihanWang314/ragen",
+				link: "https://ragen-ai.github.io",
 				authors: "Zihan Wang*, Kangrui Wang*, Qineng Wang*, Pingyue Zhang*, Linjie Li*, Zhengyuan Yang, Kefan Yu, Minh Nhat Nguyen, Monica Lam, Yiping Lu, Kyunghyun Cho, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
-				note: ["LLM Agent + Multi-turn RL"],
-				conference_title: "Open-source Project",
+				note: [
+					"Best Poster Award – MMLS 2025",
+					"2.3k+ GitHub Stars & Media Coverage",
+					"LLM Agent + Multi-turn RL"
+				],
+				conference_title: "Midwest Machine Learning Symposium (MMLS) 2025",
 				conference_misc: "",
 				resources: {
-					website: "http://github.com/ZihanWang314/ragen",
-					code: "http://github.com/ZihanWang314/ragen",
+					website: "https://ragen-ai.github.io",
+					pdf: "https://arxiv.org/abs/2504.20073",
+					code: "https://github.com/ZihanWang314/ragen",
+					logs: "https://wandb.ai/zihanwang-ai-northwestern-university/ragen_latest/reports/RAGEN-Full-Experiments--VmlldzoxMjQzOTM1OA?accessToken=yzg8k9f70uleqb7ukisej6qj19kas8q2l9bvyig0hp02gwu2yv3ra4x15iyegqmw",
 					"tl;dr": "https://x.com/wzihanw/status/1884092805598826609"
 				}
 			},
@@ -25,7 +31,7 @@ const pubs = [
 				link: "https://github.com/RAGEN-AI/VAGEN",
 				authors: "Kangrui Wang*, Pingyue Zhang*, Zihan Wang*, Qineng Wang*, Linjie Li*, Zhengyuan Yang, Chi Wan, Yiping Lu, Manling Li",
 				note: ["VLM Agent + Multi-turn RL"],
-				conference_title: "Open-source Project",
+				conference_title: "NeurIPS 2025",
 				conference_misc: "",
 				resources: {
 					blog: "https://mll-lab.notion.site/vagen",
@@ -37,9 +43,11 @@ const pubs = [
 				title: "Chain-of-Experts: Unlocking the Communication Power of MoEs",
 				link: "https://github.com/ZihanWang314/coe",
 				authors: "Zihan Wang, Rui Pan, Lu Yin, Manling Li, Shiwei Liu",
-				conference_title: "Open-source Project",
+				note: ["Mixture-of-Experts Communication"],
+				conference_title: "arXiv Preprint 2025",
 				conference_misc: "",
 				resources: {
+					pdf: "https://arxiv.org/abs/2506.18945",
 					blog: "https://sandy-server-87f.notion.site/Chain-of-Experts-Unlocking-the-Communication-Power-of-MoEs-1ab9bb750b7980048d43e6aab3537cea",
 					code: "https://github.com/ZihanWang314/coe",
 					"tl;dr": "https://x.com/ManlingLi_/status/1896642207903629790"
@@ -898,6 +906,12 @@ const pubs = [
 										{pub.title}
 									</a>
 									<p class="text-secondary-700 my-2">{pub.authors}</p>
+									{(pub.conference_title || pub.conference_misc) && (
+										<p class="text-secondary-500 text-sm mb-2">
+											{pub.conference_title}
+											{pub.conference_misc}
+										</p>
+									)}
 									
 									{pub.note && 
 										<div class="my-2">
@@ -974,6 +988,11 @@ const pubs = [
 											{pub.resources.docs && 
 												<a href={pub.resources.docs} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
 													Docs
+												</a>
+											}
+											{pub.resources.logs && 
+												<a href={pub.resources.logs} class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md" target="_blank" rel="noopener">
+													Logs
 												</a>
 											}
 											{pub.resources.video && 
