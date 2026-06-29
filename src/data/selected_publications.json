@@ -1,4 +1,16 @@
 {
+  "2026": [
+    {
+      "title": "Planning with the Views",
+      "authors": "Kangrui Wang, Linjie Li, Zhengyuan Yang, Shiqi Chen, Zihan Wang, Li Fei-Fei, Jiajun Wu, Leonidas Guibas, Lijuan Wang, Manling Li",
+      "conference": "arXiv Preprint 2026",
+      "notes": [],
+      "resources": {
+        "website": "https://viewagent.github.io/"
+      },
+      "year": "2026"
+    }
+  ],
   "2025": [
     {
       "title": "RAGEN (RL-Agent): Training Agents by Reinforcing Reasoning",

@@ -11,6 +11,13 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 			<h1 class="text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-12">Our Projects</h1>
 			
 			<div class="space-y-12">
+				<Card
+					image_src="https://viewagent.github.io/figures/environment_overview.png"
+					title="ViewAgent"
+					website_link="https://viewagent.github.io/"
+					body="ViewAgent studies whether VLM agents can plan camera moves to find a target view in real 3D scenes. Its ViewSuite benchmark exposes a multi-turn view-planning gap and shows how on-policy view graph distillation improves spatial planning."
+				/>
+
 				<Card 
 					image_src="/assets/images/ragen.png" 
 					title="RAGEN" 
@@ -80,5 +87,4 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 	}
 	
 </style>
-
 
