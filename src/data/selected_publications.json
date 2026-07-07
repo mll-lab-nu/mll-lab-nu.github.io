@@ -65,7 +65,7 @@
         "Spotlight at ICCV 2025 Workshop on Structural Priors for Vision"
       ],
       "resources": {
-        "website": "https://mll-lab-nu.github.io/mind-cube",
+        "website": "https://mind-cube.github.io/",
         "pdf": "https://arxiv.org/abs/2506.21458",
         "data": "https://huggingface.co/datasets/MLL-Lab/MindCube",
         "code": "https://github.com/mll-lab-nu/MindCube",
