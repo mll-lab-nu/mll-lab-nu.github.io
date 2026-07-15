@@ -1,12 +1,140 @@
 {
   "2026": [
     {
+      "title": "RAGEN-2: Reasoning Collapse in Agentic RL",
+      "authors": "Zihan Wang*, Chi Gui*, Xing Jin*, Qineng Wang*, Licheng Liu*, Kangrui Wang, Shiqi Chen, Linjie Li, Zhengyuan Yang, Pingyue Zhang, Yiping Lu, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
+      "conference": "ICML 2026",
+      "notes": [
+        "Oral (Top 0.7%)",
+        "Best Paper (Top 1%) at CVPR 2026 MMRAgI Workshop",
+        "Hugging Face #2 Paper of the Day, Invited Talk at MIT Media Lab"
+      ],
+      "resources": {
+        "website": "https://ragen-ai.github.io/v2/",
+        "pdf": "https://arxiv.org/abs/2604.06268",
+        "code": "https://github.com/mll-lab-nu/RAGEN"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "Spatial Mental Modeling from Limited Views",
+      "authors": "Qineng Wang*, Baiqiao Yin*, Pingyue Zhang, Jianshu Zhang, Kangrui Wang, Zihan Wang, Jieyu Zhang, Keshigeyan Chandrasegaran, Han Liu, Ranjay Krishna, Saining Xie, Jiajun Wu+, Li Fei-Fei+, Manling Li+",
+      "conference": "ICLR 2026",
+      "notes": [
+        "Best Paper Award at ICCV 2025 SP4V Workshop",
+        "Best Paper Honorable Mention at NeurIPS 2025 LAW Workshop",
+        "The Best of ICCV (featured by Voxel51), Adopted by Gemini 3 Pro"
+      ],
+      "resources": {
+        "website": "https://mind-cube.github.io/",
+        "pdf": "https://arxiv.org/abs/2506.21458",
+        "data": "https://huggingface.co/datasets/MLL-Lab/MindCube",
+        "code": "https://github.com/mll-lab-nu/MindCube",
+        "tl;dr": "https://x.com/ManlingLi_/status/1939760677133987952"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "ENACT: Evaluating Embodied Cognition with World Modeling of Egocentric Interaction",
+      "authors": "Qineng Wang*, Wenlong Huang*, Yu Zhou, Hang Yin, Tianwei Bao, Jianwen Lyu, Weiyu Liu, Ruohan Zhang+, Jiajun Wu+, Li Fei-Fei+, Manling Li+",
+      "conference": "ICLR 2026",
+      "notes": [
+        "Outstanding Paper Award at ICLR 2026 World Models Workshop",
+        "Outstanding Paper Award at ICLR 2026 Lifelong Agents Workshop",
+        "Spotlight at NeurIPS 2025 LAW Workshop"
+      ],
+      "resources": {
+        "website": "https://enact-embodied-cognition.github.io/",
+        "pdf": "https://enact-embodied-cognition.github.io/enact.pdf",
+        "code": "https://github.com/mll-lab-nu/ENACT"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "Theory of Space: Can Foundation Models Construct Spatial Beliefs through Active Exploration?",
+      "authors": "Pingyue Zhang*, Zihan Huang*, Yue Wang*, Jieyu Zhang*, Letian Xue, Zihan Wang, Qineng Wang, Keshigeyan Chandrasegaran, Ruohan Zhang, Yejin Choi, Ranjay Krishna, Jiajun Wu, Li Fei-Fei, Manling Li",
+      "conference": "ICLR 2026",
+      "notes": [
+        "Spotlight at ACL 2026 Workshop on Advances in Language and Vision Research",
+        "Featured by MIT Tech Review"
+      ],
+      "resources": {
+        "website": "https://theory-of-space.github.io/",
+        "pdf": "https://arxiv.org/abs/2602.07055",
+        "code": "https://github.com/mll-lab-nu/Theory-of-Space"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "ActionEQA: Action Interface for Embodied Question Answering",
+      "authors": "Tianwei Bao*, Qineng Wang*, Kangrui Wang, Mingkai Deng, Guangyi Liu, Zhiting Hu, Eric P. Xing, Manling Li",
+      "conference": "TMLR 2026",
+      "notes": [],
+      "resources": {
+        "website": "https://actioneqa.github.io/",
+        "pdf": "https://openreview.net/forum?id=HY2ruqdMt4",
+        "code": "https://github.com/ActionEQA/ActionEQA_TMLR_2026"
+      },
+      "year": "2026"
+    },
+    {
       "title": "Planning with the Views",
       "authors": "Kangrui Wang, Linjie Li, Zhengyuan Yang, Shiqi Chen, Zihan Wang, Li Fei-Fei, Jiajun Wu, Leonidas Guibas, Lijuan Wang, Manling Li",
       "conference": "arXiv Preprint 2026",
       "notes": [],
       "resources": {
         "website": "https://viewagent.github.io/"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "BAGEN: Are LLM Agents Budget-Aware?",
+      "authors": "Yuxiang Lin*, Zihan Wang*, Mengyang Liu*, Yuxuan Shan*, Longju Bai*, Junyao Zhang, Xing Jin, Boshan Chen, Jinyan Su, Xingyao Wang, Jiaxin Pei, Manling Li",
+      "conference": "arXiv Preprint 2026",
+      "notes": [
+        "Spotlight at Midwest Machine Learning Symposium 2026"
+      ],
+      "resources": {
+        "website": "https://ragen-ai.github.io/bagen/",
+        "pdf": "https://arxiv.org/abs/2606.00198",
+        "code": "https://github.com/mll-lab-nu/BAGEN",
+        "data": "https://huggingface.co/datasets/MLL-Lab/BAGEN"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment",
+      "authors": "Hongjue Zhao*, Haosen Sun*, Jiangtao Kong, Xiaochang Li, Qineng Wang, Liwei Jiang, Qi Zhu, Tarek F. Abdelzaher, Yejin Choi, Manling Li+, Huajie Shao+",
+      "conference": "ICLR 2026",
+      "notes": [],
+      "resources": {
+        "website": "https://odesteer.github.io/"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "Is Decentralized LLM Agent RL Robust to Heterogeneity? An Asymmetric Tale",
+      "authors": "Canyu Chen*, Kangyu Zhu*, Zhaorun Chen, Zhanhui Zhou, Shizhe Diao, Yiping Lu, Tian Li, Manling Li+, Dawn Song+",
+      "conference": "AAAI 2026 TrustAgent & PerFM Workshops",
+      "notes": [
+        "Best Paper Award (TrustAgent @ AAAI 2026)",
+        "Outstanding Paper Award (PerFM @ AAAI 2026)"
+      ],
+      "resources": {
+        "website": "https://fed-agent.github.io/",
+        "pdf": "https://fed-agent.github.io/pdf/FedAgent.pdf"
+      },
+      "year": "2026"
+    },
+    {
+      "title": "Fairness Failure Modes of Multimodal LLMs",
+      "authors": "Canyu Chen*, Anglin Cai*, Joan Nwatu, Yale Li, Jessica Hullman, Rada Mihalcea, Kathleen McKeown, Manling Li",
+      "conference": "ACL 2026 TrustNLP Workshop",
+      "notes": [
+        "Best Paper Award (TrustNLP @ ACL 2026)"
+      ],
+      "resources": {
+        "pdf": "https://drive.google.com/file/d/1ROQwyGe8TVQczvqAi43e2Ngg6chfWJg-/view?usp=sharing"
       },
       "year": "2026"
     }
@@ -18,7 +146,7 @@
       "conference": "MMLS 2025 (Midwest Machine Learning Symposium)",
       "notes": [
         "Best Poster Award",
-        "2.3k+ Github Stars, Featured by MIT Tech Review, Lambda Partner Spotlight, VentureBeat, Medium, AI News, MarkTechPost, Business Leaders Review, etc."
+        "2.7k+ Github Stars, Featured by MIT Tech Review, Lambda Partner Spotlight, VentureBeat, Medium, AI News, MarkTechPost, Business Leaders Review, etc."
       ],
       "resources": {
         "website": "https://ragen-ai.github.io",
@@ -30,14 +158,38 @@
       "year": "2025"
     },
     {
-      "title": "VAGEN: Reinfocing World Model Reasoning for Multi-Turn VLM Agents",
+      "title": "VAGEN: Reinforcing World Model Reasoning for Multi-Turn VLM Agents",
       "authors": "Kangrui Wang*, Pingyue Zhang*, Zihan Wang*, Yaning Gao*, Linjie Li*, Qineng Wang, Chi Wan, Hanyang Chen, Yiping Lu, Zhengyuan Yang, Lijuan Wang, Ranjay Krishna, Jiajun Wu, Li Fei-Fei, Yejin Choi, Manling Li",
       "conference": "NeurIPS 2025",
-      "notes": [],
+      "notes": [
+        "Featured by MIT Tech Review, Stanford HAI"
+      ],
       "resources": {
         "blog": "https://mll-lab.notion.site/vagen",
         "code": "https://github.com/RAGEN-AI/VAGEN",
         "tl;dr": "https://x.com/ManlingLi_/status/1904561315114278969"
+      },
+      "year": "2025"
+    },
+    {
+      "title": "A Simple \"Try Again\" Can Elicit Multi-Turn LLM Reasoning",
+      "authors": "Licheng Liu*, Zihan Wang*, Linjie Li, Chenwei Xu, Yiping Lu, Han Liu, Avirup Sil, Manling Li",
+      "conference": "arXiv Preprint 2025",
+      "notes": [],
+      "resources": {
+        "website": "https://unary-feedback.github.io/",
+        "pdf": "https://arxiv.org/abs/2507.14295",
+        "code": "https://github.com/lichengliu03/unary-feedback"
+      },
+      "year": "2025"
+    },
+    {
+      "title": "Internalizing World Models via Self-Play Finetuning for Agentic RL",
+      "authors": "Shiqi Chen, Tongyao Zhu, Zian Wang, Jinghan Zhang, Kangrui Wang, Siyang Gao, Teng Xiao, Yee Whye Teh, Junxian He, Manling Li",
+      "conference": "arXiv Preprint 2025",
+      "notes": [],
+      "resources": {
+        "pdf": "https://arxiv.org/abs/2510.15047"
       },
       "year": "2025"
     },
@@ -54,22 +206,6 @@
         "blog": "https://www.liquid.ai/research/exploring-diffusion-transformer-designs-via-grafting",
         "code": "https://github.com/keshik6/grafting",
         "tl;dr": "https://x.com/keshigeyan/status/1932490230290108444"
-      },
-      "year": "2025"
-    },
-    {
-      "title": "Spatial Mental Modeling from Limited Views",
-      "authors": "Qineng Wang*, Baiqiao Yin*, Pingyue Zhang, Jianshu Zhang, Kangrui Wang, Zihan Wang, Jieyu Zhang, Keshigeyan Chandrasegaran, Han Liu, Ranjay Krishna, Saining Xie, Jiajun Wu+, Li Fei-Fei+, Manling Li+",
-      "conference": "ICCV 2025",
-      "notes": [
-        "Spotlight at ICCV 2025 Workshop on Structural Priors for Vision"
-      ],
-      "resources": {
-        "website": "https://mind-cube.github.io/",
-        "pdf": "https://arxiv.org/abs/2506.21458",
-        "data": "https://huggingface.co/datasets/MLL-Lab/MindCube",
-        "code": "https://github.com/mll-lab-nu/MindCube",
-        "tl;dr": "https://x.com/ManlingLi_/status/1939760677133987952"
       },
       "year": "2025"
     },
