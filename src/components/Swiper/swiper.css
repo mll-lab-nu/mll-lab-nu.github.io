@@ -1,41 +1,9 @@
-html,
-body {
-  position: relative;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #000;
-  line-height: 1.5;
-  font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial,
-    "Segoe UI", Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#app {
-  height: 100%;
-  height: 100dvh;
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-}
-
-.demo-nav {
-  height: 48px;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  font-family: monospace;
-  color: #fff;
-  gap: 16px;
-  box-sizing: border-box;
-  padding: 6px 16px;
-  z-index: 10;
-}
+/* NOTE: Removed leftover Swiper *demo* scaffolding (html/body/#app/.demo-nav).
+   This file is imported by the home-page carousel and therefore injected
+   globally, so its `body { font-family: <system>; background:#000;
+   -webkit-font-smoothing: antialiased }` rule leaked onto the entire page —
+   making the navbar (and all home-page text) render in a system font at a
+   different weight than Inter used on every other page. */
 
 :root {
   --swiper-material-scale: 1;
