@@ -2,6 +2,7 @@
   "2026": [
     {
       "title": "RAGEN-2: Reasoning Collapse in Agentic RL",
+      "featured": true,
       "authors": "Zihan Wang*, Chi Gui*, Xing Jin*, Qineng Wang*, Licheng Liu*, Kangrui Wang, Shiqi Chen, Linjie Li, Zhengyuan Yang, Pingyue Zhang, Yiping Lu, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
       "conference": "ICML 2026",
       "notes": [
@@ -18,6 +19,7 @@
     },
     {
       "title": "Spatial Mental Modeling from Limited Views",
+      "featured": true,
       "authors": "Qineng Wang*, Baiqiao Yin*, Pingyue Zhang, Jianshu Zhang, Kangrui Wang, Zihan Wang, Jieyu Zhang, Keshigeyan Chandrasegaran, Han Liu, Ranjay Krishna, Saining Xie, Jiajun Wu+, Li Fei-Fei+, Manling Li+",
       "conference": "ICLR 2026",
       "notes": [
@@ -36,6 +38,7 @@
     },
     {
       "title": "ENACT: Evaluating Embodied Cognition with World Modeling of Egocentric Interaction",
+      "featured": true,
       "authors": "Qineng Wang*, Wenlong Huang*, Yu Zhou, Hang Yin, Tianwei Bao, Jianwen Lyu, Weiyu Liu, Ruohan Zhang+, Jiajun Wu+, Li Fei-Fei+, Manling Li+",
       "conference": "ICLR 2026",
       "notes": [
@@ -52,6 +55,7 @@
     },
     {
       "title": "Theory of Space: Can Foundation Models Construct Spatial Beliefs through Active Exploration?",
+      "featured": true,
       "authors": "Pingyue Zhang*, Zihan Huang*, Yue Wang*, Jieyu Zhang*, Letian Xue, Zihan Wang, Qineng Wang, Keshigeyan Chandrasegaran, Ruohan Zhang, Yejin Choi, Ranjay Krishna, Jiajun Wu, Li Fei-Fei, Manling Li",
       "conference": "ICLR 2026",
       "notes": [
@@ -142,6 +146,7 @@
   "2025": [
     {
       "title": "RAGEN (RL-Agent): Training Agents by Reinforcing Reasoning",
+      "featured": true,
       "authors": "Zihan Wang*, Kangrui Wang*, Qineng Wang*, Pingyue Zhang*, Linjie Li*, Zhengyuan Yang, Kefan Yu, Minh Nhat Nguyen, Monica Lam, Yiping Lu, Kyunghyun Cho, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
       "conference": "MMLS 2025 (Midwest Machine Learning Symposium)",
       "notes": [
@@ -159,6 +164,7 @@
     },
     {
       "title": "VAGEN: Reinforcing World Model Reasoning for Multi-Turn VLM Agents",
+      "featured": true,
       "authors": "Kangrui Wang*, Pingyue Zhang*, Zihan Wang*, Yaning Gao*, Linjie Li*, Qineng Wang, Chi Wan, Hanyang Chen, Yiping Lu, Zhengyuan Yang, Lijuan Wang, Ranjay Krishna, Jiajun Wu, Li Fei-Fei, Yejin Choi, Manling Li",
       "conference": "NeurIPS 2025",
       "notes": [
@@ -227,6 +233,7 @@
     },
     {
       "title": "EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents",
+      "featured": true,
       "authors": "Rui Yang, Hanyang Chen, Junyu Zhang, Mark Zhao, Cheng Qian, Kangrui Wang, Qineng Wang, Teja Venkat Koripella, Marziyeh Movahedi, Manling Li, Heng Ji, Huan Zhang, Tong Zhang",
       "conference": "ICML 2025",
       "notes": [
@@ -347,6 +354,7 @@
   "2024": [
     {
       "title": "Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making",
+      "featured": true,
       "authors": "Manling Li*, Shiyu Zhao*, Qineng Wang*, Kangrui Wang*, Yu Zhou*, Sanjana Srivastava, Cem Gokmen, Tony Lee, Li Erran Li, Ruohan Zhang, Weiyu Liu, Percy Liang, Li Fei-Fei, Jiayuan Mao, Jiajun Wu",
       "conference": "NeurIPS 2024 D&B Track",
       "notes": [

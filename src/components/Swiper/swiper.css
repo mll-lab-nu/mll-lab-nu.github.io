@@ -11,19 +11,6 @@
   --swiper-material-slide-border-radius: 32px;
 }
 
-.swiper-carousel .swiper-slide {
-  width: 680px;
-  height: 400px;
-  max-width: calc(100% - 48px);
-  margin: 0 10px;
-}
-
-@media screen and (min-width: 640px) {
-  .swiper-carousel .swiper-slide {
-    height: 500px;
-  }
-}
-
 .swiper-carousel .swiper-carousel-animate-opacity {
   height: 100%;
 }

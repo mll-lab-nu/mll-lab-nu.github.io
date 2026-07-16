@@ -3,11 +3,11 @@ import "./news.css";
 const newsItems = [
   {
     date: "July 2026",
-    event: "We organized the <a href='https://fagen-workshop.github.io/'>FAGEN: Failure Modes in Agentic AI</a> Workshop at ICML 2026, co-organized by Manling Li and Zihan Wang."
+    event: "We co-organized the <a href='https://knowledgeable-lm.github.io/'>KnowFM: Towards Knowledgeable Foundation Models</a> Workshop at ACL 2026."
   },
   {
     date: "July 2026",
-    event: "We co-organized the <a href='https://knowledgeable-lm.github.io/'>KnowFM: Towards Knowledgeable Foundation Models</a> Workshop at ACL 2026."
+    event: "We organized the <a href='https://fagen-workshop.github.io/'>FAGEN: Failure Modes in Agentic AI</a> Workshop at ICML 2026, co-organized by Manling Li and Zihan Wang."
   },
   {
     date: "June 2026",
@@ -79,19 +79,20 @@ export default function News() {
   return (
     <div className="news-container">
       <div className="news-scroll-area">
-        <ul>
+        <ol className="relative ml-1 border-l border-secondary-200">
           {newsItems.map((item, index) => (
-            <li key={index}>
-              <p className="py-2 text-lg">
-                <span className="opacity-50">{item.date} —</span>{" "}
-                <span
-                  className="news-link"
-                  dangerouslySetInnerHTML={{ __html: item.event }}
-                ></span>
-              </p>
+            <li key={index} className="mb-6 ml-5 last:mb-0">
+              <span className="absolute -left-[6.5px] mt-1.5 h-3 w-3 rounded-full border-2 border-white bg-primary-500"></span>
+              <time className="mb-1 block text-xs font-semibold uppercase tracking-wider text-primary-600">
+                {item.date}
+              </time>
+              <p
+                className="news-link text-sm leading-relaxed text-secondary-700"
+                dangerouslySetInnerHTML={{ __html: item.event }}
+              ></p>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );

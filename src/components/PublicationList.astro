@@ -1,0 +1,134 @@
+---
+import selectedPublications from '../data/selected_publications.json';
+
+interface Props {
+  featuredOnly?: boolean;
+  showYearHeaders?: boolean;
+}
+
+const { featuredOnly = false, showYearHeaders = true } = Astro.props;
+
+const resourceOrder = [
+  'website', 'pdf', 'code', 'data', 'blog', 'arxiv', 'slides', 'poster', 'video',
+  'demo', 'docs', 'project', 'huggingface', 'models', 'logs', 'media', 'tl;dr',
+  'pypi', 'docker', 'github', 'code_data', 'report'
+];
+
+const resourceLabelMap: Record<string, string> = {
+  website: 'Website', pdf: 'PDF', code: 'Code', data: 'Data', blog: 'Blog',
+  arxiv: 'arXiv', slides: 'Slides', poster: 'Poster', video: 'Video', demo: 'Demo',
+  docs: 'Docs', project: 'Project', huggingface: 'HuggingFace', models: 'Models',
+  logs: 'Logs', media: 'Media', 'tl;dr': 'TL;DR', pypi: 'PyPI', docker: 'Docker',
+  github: 'GitHub', code_data: 'Code/Data', report: 'Report'
+};
+
+const pickLink = (resources: Record<string, string>) => {
+  for (const key of resourceOrder) {
+    if (resources[key]) return resources[key];
+  }
+  const values = Object.values(resources);
+  return values.length > 0 ? values[0] : '#';
+};
+
+const formatResourceLabel = (key: string) => {
+  if (resourceLabelMap[key]) return resourceLabelMap[key];
+  return key
+    .replace(/_/g, ' ')
+    .split(' ')
+    .map((s) => (s.length <= 3 ? s.toUpperCase() : s.charAt(0).toUpperCase() + s.slice(1)))
+    .join(' ');
+};
+
+const sortResources = (resources: Record<string, string>) =>
+  Object.entries(resources).sort((a, b) => {
+    const ia = resourceOrder.includes(a[0]) ? resourceOrder.indexOf(a[0]) : resourceOrder.length;
+    const ib = resourceOrder.includes(b[0]) ? resourceOrder.indexOf(b[0]) : resourceOrder.length;
+    return ia === ib ? a[0].localeCompare(b[0]) : ia - ib;
+  });
+
+// Notes that read as competitive honors get a gold badge; everything else
+// (press coverage, star counts, adoptions) renders as quieter highlight text.
+const AWARD_RE = /(best paper|best demo|best poster|outstanding paper|honorable mention|\boral\b|spotlight|\baward\b|top 0|top 1|top 2|top 3|top 4|rank 1st)/i;
+
+const groups = Object.entries(selectedPublications)
+  .map(([year, items]) => ({
+    year,
+    publications: (items as any[])
+      .filter((it) => !featuredOnly || it.featured)
+      .map((it) => {
+        const resources = (it.resources ?? {}) as Record<string, string>;
+        const notes: string[] = Array.isArray(it.notes) ? it.notes : it.notes ? [it.notes] : [];
+        return {
+          title: it.title ?? '',
+          authors: it.authors ?? '',
+          conference: it.conference ?? '',
+          awards: notes.filter((n) => AWARD_RE.test(n)),
+          highlights: notes.filter((n) => !AWARD_RE.test(n)),
+          resources,
+          link: pickLink(resources)
+        };
+      })
+  }))
+  .filter((g) => g.publications.length > 0)
+  .sort((a, b) => Number(b.year) - Number(a.year));
+---
+
+<div class="space-y-10">
+  {groups.map((group) => (
+    <section>
+      {showYearHeaders && (
+        <div class="flex items-center gap-4 mb-5">
+          <h2 class="text-lg font-heading font-bold text-primary-700">{group.year}</h2>
+          <div class="h-px flex-1 bg-secondary-200"></div>
+        </div>
+      )}
+      <ul class="space-y-4">
+        {group.publications.map((pub) => (
+          <li class="group bg-white p-5 md:p-6 rounded-2xl border border-secondary-100 shadow-soft transition-all hover:shadow-medium hover:border-primary-200">
+            <a
+              href={pub.link}
+              target={pub.link && pub.link !== '#' ? '_blank' : undefined}
+              rel={pub.link && pub.link !== '#' ? 'noopener' : undefined}
+              class="font-heading text-lg md:text-xl font-semibold leading-snug text-secondary-900 transition-colors group-hover:text-primary-700"
+            >
+              {pub.title}
+            </a>
+            <p class="mt-1.5 text-sm leading-relaxed text-secondary-600">{pub.authors}</p>
+            {pub.conference && (
+              <p class="mt-1 text-sm font-semibold text-primary-600">{pub.conference}</p>
+            )}
+            {pub.awards.length > 0 && (
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                {pub.awards.map((award) => (
+                  <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-200">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
+                      <path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.36 4.18a1 1 0 00.95.69h4.4c.97 0 1.37 1.24.59 1.81l-3.56 2.59a1 1 0 00-.36 1.12l1.36 4.18c.3.92-.75 1.69-1.54 1.12l-3.56-2.59a1 1 0 00-1.18 0l-3.56 2.59c-.78.57-1.84-.2-1.54-1.12l1.36-4.18a1 1 0 00-.36-1.12L1.4 9.61c-.78-.57-.38-1.81.59-1.81h4.4a1 1 0 00.95-.69l1.36-4.18z" />
+                    </svg>
+                    {award}
+                  </span>
+                ))}
+              </div>
+            )}
+            {pub.highlights.length > 0 && (
+              <p class="mt-2 text-xs italic leading-relaxed text-secondary-500">{pub.highlights.join(' · ')}</p>
+            )}
+            {Object.keys(pub.resources).length > 0 && (
+              <div class="mt-3 flex flex-wrap gap-2">
+                {sortResources(pub.resources).map(([key, url]) => (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center rounded-full border border-secondary-200 px-3 py-1 text-xs font-medium text-secondary-600 transition-colors hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700"
+                  >
+                    {formatResourceLabel(key)}
+                  </a>
+                ))}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>

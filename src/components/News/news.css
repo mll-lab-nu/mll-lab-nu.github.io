@@ -1,10 +1,14 @@
 .news-link a {
-  color: rgb(var(--accent-bright));
-  font-style: italic;
+  color: #7149ba; /* primary-600 */
   font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(113, 73, 186, 0.3);
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-span {
-  color: var(--text);
+
+.news-link a:hover {
+  color: #5f3ba0; /* primary-700 */
+  border-bottom-color: rgba(113, 73, 186, 0.6);
 }
 
 .news-container {
@@ -14,10 +18,11 @@ span {
 }
 
 .news-scroll-area {
-  max-height: 400px;
+  max-height: 420px;
   overflow-y: auto;
-  padding-right: 10px;
+  padding-right: 12px;
   scrollbar-width: thin;
+  scrollbar-color: rgba(113, 73, 186, 0.35) transparent;
 }
 
 /* For Webkit browsers like Chrome/Safari */
@@ -30,26 +35,10 @@ span {
 }
 
 .news-scroll-area::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--accent-bright), 0.3);
+  background-color: rgba(113, 73, 186, 0.3);
   border-radius: 4px;
 }
 
 .news-scroll-area::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(var(--accent-bright), 0.5);
-}
-
-.news-toggle-button {
-  align-self: center;
-  background-color: transparent;
-  color: rgb(var(--accent-bright));
-  border: 1px solid rgb(var(--accent-bright));
-  border-radius: 4px;
-  padding: 6px 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.news-toggle-button:hover {
-  background-color: rgba(var(--accent-bright), 0.1);
+  background-color: rgba(113, 73, 186, 0.5);
 }
