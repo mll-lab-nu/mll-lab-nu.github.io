@@ -5,20 +5,86 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "MLL Lab (Multimodal Learning with Language), Northwestern University, led by Manling Li: agentic reinforcement learning, spatial intelligence, safe reasoning.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/assets/images/og-mll-lab.png', Astro.site);
+
+const orgJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "ResearchOrganization",
+	"@id": "https://www.mll.lab.northwestern.edu/#organization",
+	"name": "MLL Lab",
+	"alternateName": [
+		"Multimodal Learning with Language Lab",
+		"Machine Learning and Language Lab",
+		"MLL Lab at Northwestern University",
+	],
+	"url": "https://www.mll.lab.northwestern.edu/",
+	"description":
+		"MLL Lab at Northwestern University develops intelligent language and multimodal models that reason, plan, and interact with the physical world, focusing on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.",
+	"parentOrganization": {
+		"@type": "CollegeOrUniversity",
+		"name": "Northwestern University",
+		"url": "https://www.northwestern.edu/",
+	},
+	"founder": {
+		"@type": "Person",
+		"@id": "https://limanling.github.io/#person",
+		"name": "Manling Li",
+		"url": "https://limanling.github.io/",
+	},
+	"knowsAbout": [
+		"agentic reinforcement learning",
+		"multi-turn reinforcement learning",
+		"LLM agents",
+		"vision-language model agents",
+		"spatial intelligence",
+		"embodied AI",
+		"safe reasoning",
+	],
+	"sameAs": [
+		"https://github.com/mll-lab-nu",
+		"https://mll-lab-nu.github.io/",
+	],
+};
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Machine Learning and Language Lab at Northwestern University" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" href="/favicon.png" />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+		<!-- Open Graph / Twitter -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="MLL Lab" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="MLL Lab, Multimodal Learning with Language, Northwestern University" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
 		
 		<link rel="stylesheet" href="/blob.css" />
 		

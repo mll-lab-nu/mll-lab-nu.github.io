@@ -7,6 +7,6 @@ export default defineConfig({
   // ...
   integrations: [react(), tailwind()],
   output: "static",
-  site: "https://mll-lab-nu.github.io",
+  site: "https://www.mll.lab.northwestern.edu",
   base: "/"
 });

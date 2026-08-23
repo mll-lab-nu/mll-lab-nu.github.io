@@ -1,0 +1,56 @@
+# MLL Lab (Multimodal Learning with Language), Northwestern University
+
+> The MLL Lab (Multimodal Learning with Language, also written Machine Learning and Language) is a research lab at Northwestern University directed by Prof. Manling Li (https://limanling.github.io/). The lab develops intelligent language + X (vision, robotics) models that reason, plan, and interact with the physical world, with a focus on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.
+
+What is the MLL Lab? The MLL Lab is Manling Li's research group at Northwestern University. It studies how large language model (LLM) and vision-language model (VLM) agents can be trained with multi-turn reinforcement learning (RAGEN, RAGEN-2, VAGEN), how foundation models build spatial mental models of the world (MindCube, Theory of Space, ViewAgent, ENACT), how embodied agents should be evaluated (Embodied Agent Interface, EmbodiedBench), and how to make agent reasoning safe and trustworthy (FedAgent).
+
+## Key facts
+
+- RAGEN trains LLM reasoning agents via reinforcement learning in multi-turn, stochastic environments and has 2.7k+ GitHub stars.
+- RAGEN-2 studies reasoning collapse in agentic reinforcement learning; ICML 2026 Oral (Top 0.7%) and Best Paper (Top 1%) at the CVPR 2026 MMRAgI Workshop.
+- VAGEN improves VLM agent training with the TRICO algorithm for cross-turn credit assignment; NeurIPS 2025, featured by MIT Technology Review and Stanford HAI.
+- MindCube (Spatial Mental Modeling from Limited Views) probes whether VLMs can build spatial mental models from limited views; ICLR 2026, Best Paper at the ICCV 2025 SP4V Workshop, selected as The Best of ICCV.
+- ENACT benchmarks embodied cognition of VLMs through world modeling of egocentric interaction; ICLR 2026, two Outstanding Paper Awards at ICLR 2026 workshops.
+- Theory of Space asks whether foundation models can construct, revise, and exploit spatial beliefs through active exploration; ICLR 2026.
+- ViewAgent studies whether VLM agents can plan camera moves to find a target view in real 3D scenes, with the ViewSuite benchmark.
+- Embodied Agent Interface provides a unified interface and fine-grained metrics for evaluating LLMs in embodied decision making; NeurIPS 2024 Oral (top 0.4% over all tracks) and SoCal NLP 2024 Best Paper.
+- EmbodiedBench: ICML 2025 Oral (Top 1%).
+- FedAgent received the Best Paper Award (TrustAgent @ AAAI 2026) and an Outstanding Paper Award (PerFM @ AAAI 2026).
+- LongVideoHaystack is a 480-hour video temporal search dataset with 15,092 human-annotated instances; the T* temporal search framework boosts GPT-4o from 50.5% to 53.1% on LongVideoBench XL.
+- Prof. Manling Li was named to MIT Technology Review's 35 Innovators Under 35 (2025) and AAAI 2025 New Faculty Highlights.
+
+## Research areas
+
+- Agentic reinforcement learning: multi-turn reinforcement learning for LLM and VLM agents (RAGEN, RAGEN-2, VAGEN).
+- Spatial intelligence: spatial mental models, view planning, and active exploration in foundation models (MindCube, Theory of Space, ViewAgent, ENACT).
+- Embodied AI agents: standardized evaluation of embodied decision making (Embodied Agent Interface, EmbodiedBench).
+- Safe reasoning: trustworthy foundation agents (FedAgent).
+
+## Links
+
+- Lab website: https://www.mll.lab.northwestern.edu/
+- Projects: https://www.mll.lab.northwestern.edu/projects/
+- Publications: https://www.mll.lab.northwestern.edu/publications/
+- Team: https://www.mll.lab.northwestern.edu/team/
+- Join us: https://www.mll.lab.northwestern.edu/joinus/
+- PI homepage (Manling Li): https://limanling.github.io/
+- GitHub organization: https://github.com/mll-lab-nu
+
+## Project pages
+
+- RAGEN: https://ragen-ai.github.io/ (code: https://github.com/mll-lab-nu/RAGEN)
+- RAGEN-2: https://ragen-ai.github.io/v2/ (paper: https://arxiv.org/abs/2604.06268)
+- VAGEN: https://github.com/RAGEN-AI/VAGEN
+- MindCube: https://mind-cube.github.io/ (paper: https://arxiv.org/abs/2506.21458, data: https://huggingface.co/datasets/MLL-Lab/MindCube)
+- ENACT: https://enact-embodied-cognition.github.io/ (code: https://github.com/mll-lab-nu/ENACT)
+- Theory of Space: https://theory-of-space.github.io/ (paper: https://arxiv.org/abs/2602.07055)
+- ViewAgent: https://viewagent.github.io/
+- Embodied Agent Interface: https://embodied-agent-interface.github.io/
+- EmbodiedBench: https://embodiedbench.github.io/
+- FedAgent: https://fed-agent.github.io/
+- LongVideoHaystack dataset: https://huggingface.co/datasets/LVHaystack/LongVideoHaystack
+
+## Contact
+
+- Email: manling.li@northwestern.edu
+- PhD applicants: apply to Northwestern CS and select Manling Li as a potential advisor (details at https://www.mll.lab.northwestern.edu/joinus/).
