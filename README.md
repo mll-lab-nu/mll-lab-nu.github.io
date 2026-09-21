@@ -1,6 +1,6 @@
 # MLL Lab Website
 
-Source for the website of the MLL Lab (Multimodal Learning with Language) at Northwestern University, led by [Manling Li](https://limanling.github.io/). The lab works on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.
+Source for the website of the MLL Lab (Multimodal Learning and Language) at Northwestern University, led by [Manling Li](https://limanling.github.io/). The lab works on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.
 
 Live site: [www.mll.lab.northwestern.edu](https://www.mll.lab.northwestern.edu/) (deployed to GitHub Pages by `.github/workflows/deploy.yaml` on every push to `main`).
 

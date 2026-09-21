@@ -1,6 +1,6 @@
-# MLL Lab (Multimodal Learning with Language), Northwestern University
+# MLL Lab (Multimodal Learning and Language), Northwestern University
 
-> The MLL Lab (Multimodal Learning with Language, also written Machine Learning and Language) is a research lab at Northwestern University directed by Prof. Manling Li (https://limanling.github.io/). The lab develops intelligent language + X (vision, robotics) models that reason, plan, and interact with the physical world, with a focus on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.
+> The MLL Lab (Multimodal Learning and Language) is a research lab at Northwestern University directed by Prof. Manling Li (https://limanling.github.io/). The lab develops intelligent language + X (vision, robotics) models that reason, plan, and interact with the physical world, with a focus on agentic reinforcement learning, spatial intelligence, embodied AI agents, and safe reasoning.
 
 What is the MLL Lab? The MLL Lab is Manling Li's research group at Northwestern University. It studies how large language model (LLM) and vision-language model (VLM) agents can be trained with multi-turn reinforcement learning (RAGEN, RAGEN-2, VAGEN), how foundation models build spatial mental models of the world (MindCube, Theory of Space, ViewAgent, ENACT), how embodied agents should be evaluated (Embodied Agent Interface, EmbodiedBench), and how to make agent reasoning safe and trustworthy (FedAgent).
 
