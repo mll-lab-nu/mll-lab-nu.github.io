@@ -1,6 +1,18 @@
 {
   "2026": [
     {
+      "title": "Embodied First Exam",
+      "featured": true,
+      "authors": "Kangrui Wang*, Qineng Wang*, Changhe Chen*, Pingyue Zhang*, Chi Gui*, Feishi Wang, Canyu Chen, Wenli Xiao, Xiaoyu Huang, Tonghe Zhang, Linjie Li, Zihan Wang, Minyeong Kim, Yiyou Sun, Mingkai Deng, Jinyu Hou, Eric P. Xing, Han Liu, Qi Zhu, Huaxiu Yao, Zhiwen Fan, Yuejiang Liu, Dawn Song, Pieter Abbeel, Jiajun Wu, Yuke Zhu, Guanya Shi, Ruohan Zhang, Manling Li",
+      "conference": "2026",
+      "resources": {
+        "website": "https://www.embodied-first-exam.ai",
+        "code": "https://github.com/mll-lab-nu/embodied-first-exam",
+        "video": "https://huggingface.co/datasets/MLL-Lab/embodied-exam-media/resolve/main/site/blog/efe-intro.mp4"
+      },
+      "year": "2026"
+    },
+    {
       "title": "RAGEN-2: Reasoning Collapse in Agentic RL",
       "featured": true,
       "authors": "Zihan Wang*, Chi Gui*, Xing Jin*, Qineng Wang*, Licheng Liu*, Kangrui Wang, Shiqi Chen, Linjie Li, Zhengyuan Yang, Pingyue Zhang, Yiping Lu, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, Manling Li",
