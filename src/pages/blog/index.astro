@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+
+const posts = Object.values(import.meta.glob('./*.md', { eager: true }))
+	.map((post: any) => ({ ...post.frontmatter, url: post.url }))
+	.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const formatDate = (date: string) =>
+	new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+
+<Layout
+	title="Blog | MLL Lab, Northwestern University"
+	description="Notes from the MLL Lab at Northwestern University on training and evaluating AI agents."
+>
+	<main class="bg-background-light py-12">
+		<Container maxWidth="lg">
+			<h1 class="text-4xl md:text-6xl font-heading font-bold text-secondary-900 text-center mb-12">Blog</h1>
+			<div class="max-w-3xl mx-auto space-y-10">
+				{posts.map((post) => (
+					<article>
+						<p class="text-sm text-secondary-600 mb-1">{formatDate(post.date)} · {post.authors}</p>
+						<h2 class="text-2xl font-heading font-bold mb-2">
+							<a href={post.url} class="hover:text-primary-600 transition-colors">{post.title}</a>
+						</h2>
+						<p class="text-lg text-secondary-700">{post.description}</p>
+					</article>
+				))}
+			</div>
+		</Container>
+	</main>
+</Layout>

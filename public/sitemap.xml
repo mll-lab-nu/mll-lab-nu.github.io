@@ -20,4 +20,16 @@
     <loc>https://www.mll.lab.northwestern.edu/joinus/</loc>
     <lastmod>2026-08-23</lastmod>
   </url>
+  <url>
+    <loc>https://www.mll.lab.northwestern.edu/blog/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mll.lab.northwestern.edu/blog/stabilizing-agent-rl-reward-variance-mutual-information/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mll.lab.northwestern.edu/blog/teaching-agents-to-model-the-world/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
 </urlset>
