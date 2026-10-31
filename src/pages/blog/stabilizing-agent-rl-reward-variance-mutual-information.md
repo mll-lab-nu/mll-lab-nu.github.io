@@ -1,26 +1,26 @@
 ---
-title: "Stabilizing agent RL: filter prompts by reward variance, and watch mutual information instead of entropy"
+title: "Diversity is the key to stable agent RL, but entropy measures the wrong kind"
 date: 2026-10-30
 authors: MLL Lab
 layout: ../../layouts/BlogPost.astro
-keywords: ["agentic reinforcement learning", "agent RL", "reasoning collapse", "template collapse", "mutual information", "reward variance filtering", "data filtering", "RL training stability", "RAGEN-2"]
-description: "One check and one fix from RAGEN-2 for multi-turn agent RL: drop prompts whose rollouts all get similar rewards, and track whether the agent's reasoning still depends on its input."
+keywords: ["agentic reinforcement learning", "agent RL", "reasoning diversity", "reasoning collapse", "template collapse", "mutual information", "reward variance filtering", "data filtering", "RL training stability", "RAGEN-2"]
+description: "Reasoning diversity is what keeps multi-turn agent RL healthy, but only diversity across inputs counts. One check and one fix from RAGEN-2: track mutual information, and filter prompts by reward variance."
 ---
 
-If you train multi-turn LLM agents with RL, you probably watch two curves: reward, and the entropy of the model's outputs. Reward tells you whether the agent is succeeding. Entropy is supposed to tell you whether its reasoning is still healthy. In [RAGEN-2](https://arxiv.org/abs/2604.06268) we found a failure that neither curve shows. The agent keeps writing varied, fluent reasoning, but the reasoning no longer depends on what the agent sees. This post explains how to detect that failure and a small training change that reduces it. Both come from the paper, and both are in the [RAGEN code](https://github.com/mll-lab-nu/RAGEN).
+If you train multi-turn LLM agents with RL, you probably watch two curves: reward, and the entropy of the model's outputs. Reward tells you whether the agent is succeeding. Entropy is supposed to tell you whether its reasoning is still diverse, and diversity is the key to keeping agent RL from collapsing. In [RAGEN-2](https://arxiv.org/abs/2604.06268) we found that entropy measures the wrong kind of diversity. The agent keeps writing varied, fluent reasoning, but the reasoning no longer depends on what the agent sees. This post explains which diversity actually matters, how to measure it, and a small training change that keeps it from collapsing. Both come from the paper, and both are in the [RAGEN code](https://github.com/mll-lab-nu/RAGEN).
 
 ## The failure: reasoning that would fit any input
 
 Imagine a Sokoban agent that, after some training, writes something like "I need to push the box toward the goal while avoiding walls, so I will move carefully" before every action. Each sentence varies a little from sample to sample, so the output entropy stays high. But the same paragraph would fit any board. The agent has stopped reasoning about the board in front of it.
 
-We call this **template collapse**. The reason entropy misses it is that entropy measures only one thing. Total reasoning entropy splits into two parts:
+We call this **template collapse**. The reason entropy misses it is that reasoning diversity comes in two kinds, and entropy measures only one of them. Total reasoning entropy splits into two parts:
 
-- **H(Z | X)**, the conditional entropy: how much the reasoning Z varies for the same input X. This is what entropy monitoring measures.
-- **I(X; Z)**, the mutual information: how much the reasoning tells you about which input produced it. This is what you actually want to stay high.
+- **Within-input diversity, H(Z | X)**, the conditional entropy: how much the reasoning Z varies for the same input X. This is what entropy monitoring measures.
+- **Cross-input diversity, I(X; Z)**, the mutual information: how much the reasoning differs from one input to another, that is, how much it tells you about which input produced it. This is the diversity you actually want to stay high.
 
-Template collapse is the case where the first part stays high and the second part drops toward zero. In our training runs, mutual information started falling well before task success did, while conditional entropy stayed high the whole time. So a stable entropy curve is not good news by itself.
+Template collapse is the case where the first part stays high and the second part drops toward zero: the reasoning looks diverse on every single input, yet is the same across inputs. In our training runs, mutual information started falling well before task success did, while conditional entropy stayed high the whole time. So a stable entropy curve is not good news by itself.
 
-## The check: measure whether reasoning still depends on the input
+## The check: measure diversity across inputs, not within them
 
 Mutual information has no closed form for token sequences, so we estimate it inside each training batch. The idea is a simple retrieval test.
 
@@ -44,11 +44,11 @@ Consider one prompt with G sampled trajectories. With group-based advantages, th
 
 The KL penalty and the entropy bonus do not behave this way. They push on every reasoning chain with roughly the same force, no matter which prompt it came from or what reward it got. We measured this directly. We sorted prompts into six buckets by reward variance and found that the task gradient norm rises steadily with reward variance, while the regularizer gradient norm stays flat across all six buckets.
 
-So on low-variance prompts, the update is mostly the regularizer. The regularizer keeps the reasoning fluent and varied, but it does not push the reasoning to depend on the input. Repeat that over many steps and you get template collapse.
+So on low-variance prompts, the update is mostly the regularizer. The regularizer keeps within-input diversity up, so the reasoning stays fluent and varied, but it does nothing for cross-input diversity, the part that ties reasoning to the input. Repeat that over many steps and you get template collapse.
 
 ## The fix: filter prompts by reward variance before each update
 
-The fix follows directly. Before each update, compute the reward variance of each prompt's group and drop the prompts with the least of it. We call this **SNR-Aware Filtering**, since reward variance serves as a cheap stand-in for the signal-to-noise ratio of that prompt's gradient.
+The fix follows directly. Reward variance is itself a kind of diversity: diversity in outcomes among the rollouts of one prompt. Before each update, compute the reward variance of each prompt's group and drop the prompts with the least of it. We call this **SNR-Aware Filtering**, since reward variance serves as a cheap stand-in for the signal-to-noise ratio of that prompt's gradient.
 
 The rule we use is like top-p sampling, but over prompts. Sort prompts by reward variance, then keep the smallest set of top prompts whose variances add up to a fraction ρ of the batch total:
 
@@ -109,7 +109,7 @@ A few practical limits:
 
 ## Summary
 
-- Entropy staying high does not mean the agent is still reasoning about its input. Track the mutual information between input and reasoning; in-batch retrieval accuracy is an easy way to start.
+- Diversity is the key, but the right kind. Entropy staying high only shows diversity within each input; it does not mean the agent is still reasoning about its input. Track cross-input diversity, the mutual information between input and reasoning; in-batch retrieval accuracy is an easy way to start.
 - Prompts whose rollouts all get similar rewards contribute mostly regularizer pressure to the update. Drop them before the update by ranking prompts on reward variance.
 - Check the spread of reward variance across prompts before you rely on the filter.
 

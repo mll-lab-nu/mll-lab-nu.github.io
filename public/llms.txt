@@ -39,7 +39,7 @@ What is the MLL Lab? The MLL Lab is Manling Li's research group at Northwestern 
 
 ## Blog posts
 
-- Stabilizing agent RL: filter prompts by reward variance, and watch mutual information instead of entropy (practical guide to RAGEN-2: detecting template collapse in agentic reinforcement learning with in-batch mutual information, and SNR-Aware Filtering by reward variance): https://www.mll.lab.northwestern.edu/blog/stabilizing-agent-rl-reward-variance-mutual-information/
+- Diversity is the key to stable agent RL, but entropy measures the wrong kind (practical guide to RAGEN-2: detecting template collapse in agentic reinforcement learning with in-batch mutual information, and SNR-Aware Filtering by reward variance): https://www.mll.lab.northwestern.edu/blog/stabilizing-agent-rl-reward-variance-mutual-information/
 - Teaching agents to model the world (how RAGEN-2, VAGEN, Planning with the Views, and Embodied First Exam connect through agent world models): https://www.mll.lab.northwestern.edu/blog/teaching-agents-to-model-the-world/
 
 ## Project pages
