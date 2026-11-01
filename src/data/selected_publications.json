@@ -8,7 +8,9 @@
       "resources": {
         "website": "https://www.embodied-first-exam.ai",
         "code": "https://github.com/mll-lab-nu/embodied-first-exam",
-        "video": "https://huggingface.co/datasets/MLL-Lab/embodied-exam-media/resolve/main/site/blog/efe-intro.mp4"
+        "video": "https://huggingface.co/datasets/MLL-Lab/embodied-exam-media/resolve/main/site/blog/efe-intro.mp4",
+        "tl;dr": "https://x.com/ManlingLi_/status/2112307226224292176",
+        "blog": "https://www.embodied-first-exam.ai/blogs/first-exam/"
       },
       "year": "2026"
     },
@@ -25,7 +27,9 @@
       "resources": {
         "website": "https://ragen-ai.github.io/v2/",
         "pdf": "https://arxiv.org/abs/2604.06268",
-        "code": "https://github.com/mll-lab-nu/RAGEN"
+        "code": "https://github.com/mll-lab-nu/RAGEN",
+        "tl;dr": "https://x.com/ManlingLi_/status/2032594318226014689",
+        "blog": "https://www.mll.lab.northwestern.edu/blog/stabilizing-agent-rl-reward-variance-mutual-information/"
       },
       "year": "2026"
     },
@@ -61,7 +65,8 @@
       "resources": {
         "website": "https://enact-embodied-cognition.github.io/",
         "pdf": "https://enact-embodied-cognition.github.io/enact.pdf",
-        "code": "https://github.com/mll-lab-nu/ENACT"
+        "code": "https://github.com/mll-lab-nu/ENACT",
+        "tl;dr": "https://x.com/qineng_wang/status/1993013981171118527"
       },
       "year": "2026"
     },
@@ -77,7 +82,8 @@
       "resources": {
         "website": "https://theory-of-space.github.io/",
         "pdf": "https://arxiv.org/abs/2602.07055",
-        "code": "https://github.com/mll-lab-nu/Theory-of-Space"
+        "code": "https://github.com/mll-lab-nu/Theory-of-Space",
+        "tl;dr": "https://x.com/ManlingLi_/status/2023452118070292766"
       },
       "year": "2026"
     },
@@ -99,7 +105,9 @@
       "conference": "arXiv Preprint 2026",
       "notes": [],
       "resources": {
-        "website": "https://viewagent.github.io/"
+        "website": "https://viewagent.github.io/",
+        "tl;dr": "https://x.com/ManlingLi_/status/2067697152722415623",
+        "blog": "https://www.mll.lab.northwestern.edu/blog/teaching-agents-to-model-the-world/"
       },
       "year": "2026"
     },
@@ -114,7 +122,8 @@
         "website": "https://ragen-ai.github.io/bagen/",
         "pdf": "https://arxiv.org/abs/2606.00198",
         "code": "https://github.com/mll-lab-nu/BAGEN",
-        "data": "https://huggingface.co/datasets/MLL-Lab/BAGEN"
+        "data": "https://huggingface.co/datasets/MLL-Lab/BAGEN",
+        "tl;dr": "https://x.com/wzenus/status/2060397732846612489"
       },
       "year": "2026"
     },
@@ -254,7 +263,8 @@
       "resources": {
         "website": "https://embodiedbench.github.io/",
         "pdf": "https://arxiv.org/abs/2502.09560",
-        "code": "https://embodiedbench.github.io/"
+        "code": "https://embodiedbench.github.io/",
+        "tl;dr": "https://x.com/RuiYang70669025/status/1890256810474721357"
       },
       "year": "2025"
     },
@@ -266,7 +276,8 @@
       "resources": {
         "pdf": "https://arxiv.org/abs/2503.01773",
         "code": "https://github.com/shiqichen17/AdaptVis",
-        "data": "https://github.com/shiqichen17/AdaptVis"
+        "data": "https://github.com/shiqichen17/AdaptVis",
+        "tl;dr": "https://x.com/ManlingLi_/status/1990946901974274052"
       },
       "year": "2025"
     },
@@ -301,7 +312,8 @@
       "resources": {
         "website": "https://longvideohaystack.github.io",
         "data": "https://huggingface.co/LVHaystack",
-        "code": "https://github.com/LongVideoHaystack/TStar"
+        "code": "https://github.com/LongVideoHaystack/TStar",
+        "tl;dr": "https://x.com/wzenus/status/1908284905777488215"
       },
       "year": "2025"
     },
@@ -340,12 +352,13 @@
       "year": "2025"
     },
     {
-      "title": "The Law of Knowledge Overshadowing: Towards Understanding, Predicting and Preventing LLM Hallucination",
+      "title": "The Law of Knowledge Overshadowing: Towards Understanding, Predicting, and Preventing LLM Hallucination",
       "authors": "Yuji Zhang, Sha Li, Cheng Qian, Jiateng Liu, Pengfei Yu, Chi Han, Yi Fung, Kathleen McKeown, ChengXiang Zhai, Manling Li, Heng Ji",
       "conference": "ACL 2025 Findings",
       "notes": [],
       "resources": {
-        "pdf": "https://arxiv.org/abs/2407.08039"
+        "pdf": "https://arxiv.org/abs/2502.16143",
+        "tl;dr": "https://x.com/ManlingLi_/status/1896060105344631235"
       },
       "year": "2025"
     },
@@ -380,7 +393,8 @@
         "data": "https://huggingface.co/datasets/Inevitablevalor/EmbodiedAgentInterface",
         "docker": "https://hub.docker.com/r/jameskrw/eai-eval",
         "pypi": "https://pypi.org/project/eai-eval/",
-        "docs": "https://embodied-agent-eval.readthedocs.io/en/latest/#"
+        "docs": "https://embodied-agent-eval.readthedocs.io/en/latest/#",
+        "tl;dr": "https://x.com/ManlingLi_/status/1854041025146404897"
       },
       "year": "2024"
     },
@@ -393,7 +407,8 @@
         "website": "https://hourvideo.stanford.edu",
         "pdf": "https://arxiv.org/abs/2411.04998",
         "data": "https://huggingface.co/datasets/HourVideo/HourVideo",
-        "code": "https://github.com/keshik6/HourVideo"
+        "code": "https://github.com/keshik6/HourVideo",
+        "tl;dr": "https://x.com/keshigeyan/status/1863652813668225040"
       },
       "year": "2024"
     },
@@ -406,7 +421,8 @@
         "website": "https://yunongliu1.github.io/ikea-video-manual/",
         "pdf": "https://arxiv.org/pdf/2411.11409",
         "data": "https://github.com/yunongLiu1/IKEA-Manuals-at-Work",
-        "code": "https://github.com/yunongLiu1/IKEA-Manuals-at-Work"
+        "code": "https://github.com/yunongLiu1/IKEA-Manuals-at-Work",
+        "tl;dr": "https://x.com/yunongliu1/status/1858951328980251065"
       },
       "year": "2024"
     },
@@ -423,7 +439,8 @@
         "code": "https://github.com/Glaciohound/LM-Steer",
         "demo": "https://huggingface.co/spaces/Glaciohound/LM-Steer",
         "slides": "https://lm-steer.github.io/assets/slides.pdf",
-        "poster": "https://lm-steer.github.io/assets/poster.pdf"
+        "poster": "https://lm-steer.github.io/assets/poster.pdf",
+        "tl;dr": "https://x.com/ManlingLi_/status/1792994465470108016"
       },
       "year": "2024"
     },
